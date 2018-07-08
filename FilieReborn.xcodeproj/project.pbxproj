@@ -1,0 +1,567 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5551B3E020F2AAEF00CE3140 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5551B3DF20F2AAEF00CE3140 /* AppDelegate.m */; };
+		5551B3E220F2AAF200CE3140 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5551B3E120F2AAF200CE3140 /* Assets.xcassets */; };
+		5551B3E520F2AAF200CE3140 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5551B3E320F2AAF200CE3140 /* MainMenu.xib */; };
+		5551B3E820F2AAF200CE3140 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5551B3E720F2AAF200CE3140 /* main.m */; };
+		5551B3F320F2AAF200CE3140 /* FilieRebornTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5551B3F220F2AAF200CE3140 /* FilieRebornTests.m */; };
+		5551B3FE20F2AAF200CE3140 /* FilieRebornUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5551B3FD20F2AAF200CE3140 /* FilieRebornUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5551B3EF20F2AAF200CE3140 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5551B3D320F2AAEF00CE3140 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5551B3DA20F2AAEF00CE3140;
+			remoteInfo = FilieReborn;
+		};
+		5551B3FA20F2AAF200CE3140 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5551B3D320F2AAEF00CE3140 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5551B3DA20F2AAEF00CE3140;
+			remoteInfo = FilieReborn;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5551B3DB20F2AAEF00CE3140 /* FilieReborn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilieReborn.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5551B3DE20F2AAEF00CE3140 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5551B3DF20F2AAEF00CE3140 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5551B3E120F2AAF200CE3140 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5551B3E420F2AAF200CE3140 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		5551B3E620F2AAF200CE3140 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5551B3E720F2AAF200CE3140 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5551B3E920F2AAF200CE3140 /* FilieReborn.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FilieReborn.entitlements; sourceTree = "<group>"; };
+		5551B3EE20F2AAF200CE3140 /* FilieRebornTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilieRebornTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5551B3F220F2AAF200CE3140 /* FilieRebornTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilieRebornTests.m; sourceTree = "<group>"; };
+		5551B3F420F2AAF200CE3140 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5551B3F920F2AAF200CE3140 /* FilieRebornUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilieRebornUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5551B3FD20F2AAF200CE3140 /* FilieRebornUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilieRebornUITests.m; sourceTree = "<group>"; };
+		5551B3FF20F2AAF200CE3140 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5551B3D820F2AAEF00CE3140 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5551B3EB20F2AAF200CE3140 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5551B3F620F2AAF200CE3140 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5551B3D220F2AAEF00CE3140 = {
+			isa = PBXGroup;
+			children = (
+				5551B3DD20F2AAEF00CE3140 /* FilieReborn */,
+				5551B3F120F2AAF200CE3140 /* FilieRebornTests */,
+				5551B3FC20F2AAF200CE3140 /* FilieRebornUITests */,
+				5551B3DC20F2AAEF00CE3140 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5551B3DC20F2AAEF00CE3140 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5551B3DB20F2AAEF00CE3140 /* FilieReborn.app */,
+				5551B3EE20F2AAF200CE3140 /* FilieRebornTests.xctest */,
+				5551B3F920F2AAF200CE3140 /* FilieRebornUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5551B3DD20F2AAEF00CE3140 /* FilieReborn */ = {
+			isa = PBXGroup;
+			children = (
+				5551B3DE20F2AAEF00CE3140 /* AppDelegate.h */,
+				5551B3DF20F2AAEF00CE3140 /* AppDelegate.m */,
+				5551B3E120F2AAF200CE3140 /* Assets.xcassets */,
+				5551B3E320F2AAF200CE3140 /* MainMenu.xib */,
+				5551B3E620F2AAF200CE3140 /* Info.plist */,
+				5551B3E720F2AAF200CE3140 /* main.m */,
+				5551B3E920F2AAF200CE3140 /* FilieReborn.entitlements */,
+			);
+			path = FilieReborn;
+			sourceTree = "<group>";
+		};
+		5551B3F120F2AAF200CE3140 /* FilieRebornTests */ = {
+			isa = PBXGroup;
+			children = (
+				5551B3F220F2AAF200CE3140 /* FilieRebornTests.m */,
+				5551B3F420F2AAF200CE3140 /* Info.plist */,
+			);
+			path = FilieRebornTests;
+			sourceTree = "<group>";
+		};
+		5551B3FC20F2AAF200CE3140 /* FilieRebornUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5551B3FD20F2AAF200CE3140 /* FilieRebornUITests.m */,
+				5551B3FF20F2AAF200CE3140 /* Info.plist */,
+			);
+			path = FilieRebornUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5551B3DA20F2AAEF00CE3140 /* FilieReborn */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5551B40220F2AAF200CE3140 /* Build configuration list for PBXNativeTarget "FilieReborn" */;
+			buildPhases = (
+				5551B3D720F2AAEF00CE3140 /* Sources */,
+				5551B3D820F2AAEF00CE3140 /* Frameworks */,
+				5551B3D920F2AAEF00CE3140 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FilieReborn;
+			productName = FilieReborn;
+			productReference = 5551B3DB20F2AAEF00CE3140 /* FilieReborn.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5551B3ED20F2AAF200CE3140 /* FilieRebornTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5551B40520F2AAF200CE3140 /* Build configuration list for PBXNativeTarget "FilieRebornTests" */;
+			buildPhases = (
+				5551B3EA20F2AAF200CE3140 /* Sources */,
+				5551B3EB20F2AAF200CE3140 /* Frameworks */,
+				5551B3EC20F2AAF200CE3140 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5551B3F020F2AAF200CE3140 /* PBXTargetDependency */,
+			);
+			name = FilieRebornTests;
+			productName = FilieRebornTests;
+			productReference = 5551B3EE20F2AAF200CE3140 /* FilieRebornTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5551B3F820F2AAF200CE3140 /* FilieRebornUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5551B40820F2AAF200CE3140 /* Build configuration list for PBXNativeTarget "FilieRebornUITests" */;
+			buildPhases = (
+				5551B3F520F2AAF200CE3140 /* Sources */,
+				5551B3F620F2AAF200CE3140 /* Frameworks */,
+				5551B3F720F2AAF200CE3140 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5551B3FB20F2AAF200CE3140 /* PBXTargetDependency */,
+			);
+			name = FilieRebornUITests;
+			productName = FilieRebornUITests;
+			productReference = 5551B3F920F2AAF200CE3140 /* FilieRebornUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5551B3D320F2AAEF00CE3140 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Uli Kusterer";
+				TargetAttributes = {
+					5551B3DA20F2AAEF00CE3140 = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					5551B3ED20F2AAF200CE3140 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 5551B3DA20F2AAEF00CE3140;
+					};
+					5551B3F820F2AAF200CE3140 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 5551B3DA20F2AAEF00CE3140;
+					};
+				};
+			};
+			buildConfigurationList = 5551B3D620F2AAEF00CE3140 /* Build configuration list for PBXProject "FilieReborn" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5551B3D220F2AAEF00CE3140;
+			productRefGroup = 5551B3DC20F2AAEF00CE3140 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5551B3DA20F2AAEF00CE3140 /* FilieReborn */,
+				5551B3ED20F2AAF200CE3140 /* FilieRebornTests */,
+				5551B3F820F2AAF200CE3140 /* FilieRebornUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5551B3D920F2AAEF00CE3140 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5551B3E220F2AAF200CE3140 /* Assets.xcassets in Resources */,
+				5551B3E520F2AAF200CE3140 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5551B3EC20F2AAF200CE3140 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5551B3F720F2AAF200CE3140 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5551B3D720F2AAEF00CE3140 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5551B3E820F2AAF200CE3140 /* main.m in Sources */,
+				5551B3E020F2AAEF00CE3140 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5551B3EA20F2AAF200CE3140 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5551B3F320F2AAF200CE3140 /* FilieRebornTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5551B3F520F2AAF200CE3140 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5551B3FE20F2AAF200CE3140 /* FilieRebornUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5551B3F020F2AAF200CE3140 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5551B3DA20F2AAEF00CE3140 /* FilieReborn */;
+			targetProxy = 5551B3EF20F2AAF200CE3140 /* PBXContainerItemProxy */;
+		};
+		5551B3FB20F2AAF200CE3140 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5551B3DA20F2AAEF00CE3140 /* FilieReborn */;
+			targetProxy = 5551B3FA20F2AAF200CE3140 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5551B3E320F2AAF200CE3140 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5551B3E420F2AAF200CE3140 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5551B40020F2AAF200CE3140 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5551B40120F2AAF200CE3140 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5551B40320F2AAF200CE3140 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FilieReborn/FilieReborn.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = RCKXACKVZS;
+				INFOPLIST_FILE = FilieReborn/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.thevoidsoftware.FilieReborn;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5551B40420F2AAF200CE3140 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FilieReborn/FilieReborn.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = RCKXACKVZS;
+				INFOPLIST_FILE = FilieReborn/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.thevoidsoftware.FilieReborn;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		5551B40620F2AAF200CE3140 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = RCKXACKVZS;
+				INFOPLIST_FILE = FilieRebornTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.thevoidsoftware.FilieRebornTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FilieReborn.app/Contents/MacOS/FilieReborn";
+			};
+			name = Debug;
+		};
+		5551B40720F2AAF200CE3140 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = RCKXACKVZS;
+				INFOPLIST_FILE = FilieRebornTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.thevoidsoftware.FilieRebornTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FilieReborn.app/Contents/MacOS/FilieReborn";
+			};
+			name = Release;
+		};
+		5551B40920F2AAF200CE3140 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = RCKXACKVZS;
+				INFOPLIST_FILE = FilieRebornUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.thevoidsoftware.FilieRebornUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FilieReborn;
+			};
+			name = Debug;
+		};
+		5551B40A20F2AAF200CE3140 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = RCKXACKVZS;
+				INFOPLIST_FILE = FilieRebornUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.thevoidsoftware.FilieRebornUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FilieReborn;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5551B3D620F2AAEF00CE3140 /* Build configuration list for PBXProject "FilieReborn" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5551B40020F2AAF200CE3140 /* Debug */,
+				5551B40120F2AAF200CE3140 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5551B40220F2AAF200CE3140 /* Build configuration list for PBXNativeTarget "FilieReborn" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5551B40320F2AAF200CE3140 /* Debug */,
+				5551B40420F2AAF200CE3140 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5551B40520F2AAF200CE3140 /* Build configuration list for PBXNativeTarget "FilieRebornTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5551B40620F2AAF200CE3140 /* Debug */,
+				5551B40720F2AAF200CE3140 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5551B40820F2AAF200CE3140 /* Build configuration list for PBXNativeTarget "FilieRebornUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5551B40920F2AAF200CE3140 /* Debug */,
+				5551B40A20F2AAF200CE3140 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5551B3D320F2AAEF00CE3140 /* Project object */;
+}
