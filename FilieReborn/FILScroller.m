@@ -134,17 +134,32 @@ typedef enum _FILScrollerHitPart
 	[self getMinArrowBox: &minArrowBox maxArrowBox: &maxArrowBox trackBox: &trackBox knobBox: &knobBox];
 	
 	if (NSPointInRect(self.trackStartPos, minArrowBox))
+	{
 		self.trackedPart = FILScrollerHitPartMinArrow;
+		myHitPart = NSScrollerDecrementLine;
+		[self sendAction:self.action to:self.target];
+	}
 	else if (NSPointInRect(self.trackStartPos, maxArrowBox))
+	{
 		self.trackedPart = FILScrollerHitPartMaxArrow;
+		myHitPart = NSScrollerIncrementLine;
+		[self sendAction:self.action to:self.target];
+	}
 	else if (NSPointInRect(self.trackStartPos, knobBox))
 		self.trackedPart = FILScrollerHitPartKnob;
 	else if (NSPointInRect(self.trackStartPos, trackBox))
 	{
 		if (self.trackStartPos.x < NSMinX(knobBox) || self.trackStartPos.y < NSMinY(knobBox))
+		{
+			myHitPart = NSScrollerDecrementPage;
 			self.trackedPart = FILScrollerHitPartMinPage;
+		}
 		else
+		{
+			myHitPart = NSScrollerIncrementPage;
 			self.trackedPart = FILScrollerHitPartMaxPage;
+		}
+		[self sendAction:self.action to:self.target];
 	}
 	else
 		self.trackedPart = FILScrollerHitPartNone;
