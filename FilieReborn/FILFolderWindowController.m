@@ -34,6 +34,7 @@ NSString *FILWindowRectKey = @"FILWindowRect";
 @property (weak) IBOutlet NSTextField *diskSpaceUsedField;
 @property (weak) IBOutlet NSTextField *diskSpaceAvailableField;
 @property (weak) IBOutlet NSScrollView *iconsScrollView;
+@property (strong) dispatch_queue_t dispatchQueue;
 
 @end
 
@@ -44,6 +45,7 @@ NSString *FILWindowRectKey = @"FILWindowRect";
 	if (self = [super initWithWindowNibName:[self className]])
 	{
 		_folderURL = folderURL;
+		_dispatchQueue = dispatch_queue_create(folderURL.path.UTF8String, DISPATCH_QUEUE_SERIAL);
 	}
 	return self;
 }
@@ -93,7 +95,7 @@ NSString *FILWindowRectKey = @"FILWindowRect";
 	return NSMakeRect(100, 100, 512, 342); // TODO: Apply a proper stagger relative to parent window.
 }
 
-- (NSArray<NSURL *> *)files
+- (NSArray<NSURL *> *)files // *** MAY BE CALLED ON OUR DISPATCH QUEUE'S THREAD!
 {
 	NSError *err = nil;
 	NSArray<NSURL *> *files = [NSFileManager.defaultManager contentsOfDirectoryAtURL: self.folderURL includingPropertiesForKeys: @[] options: NSDirectoryEnumerationSkipsSubdirectoryDescendants | NSDirectoryEnumerationSkipsPackageDescendants | NSDirectoryEnumerationSkipsHiddenFiles error: &err];
@@ -117,42 +119,53 @@ NSString *FILWindowRectKey = @"FILWindowRect";
 	wd.title = [NSFileManager.defaultManager displayNameAtPath: self.folderURL.path];
 	
 	self.filesView.translatesAutoresizingMaskIntoConstraints = YES;
-	NSArray<NSURL *> *files = [self.files sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-	self.numberOfObjectsField.stringValue = [NSString stringWithFormat:@"%zu Objects", files.count];
 	
-	NSPoint currPos = NSMakePoint(10, 10);
-	NSSize maxSize = NSZeroSize;
-	FILFileIconView *previousView = nil;
-	for (NSURL *currFile in files)
-	{
-		FILFileIconView *finderIcon = [[FILFileIconView alloc] initWithURL:currFile];
-		[self.filesView addSubview: finderIcon];
-		[finderIcon sizeToFit];
-		
-		NSRect newFrame = { currPos, finderIcon.frame.size };
-		if (NSMaxX(newFrame) > box.size.width)
+	dispatch_async(_dispatchQueue, ^{
+		NSPoint currPos = NSMakePoint(10, 10);
+		NSSize maxSize = NSZeroSize;
+
+		NSArray<NSURL *> *files = [self.files sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+		dispatch_sync(dispatch_get_main_queue(), ^{
+			self.numberOfObjectsField.stringValue = [NSString stringWithFormat:@"%zu Objects", files.count];
+		});
+
+		for (NSURL *currFile in files)
 		{
-			newFrame.origin.x = 10;
-			newFrame.origin.y += newFrame.size.height + 10;
-			currPos = newFrame.origin;
+			__block NSRect newFrame = {};
+			__block FILFileIconView *finderIcon = nil;
+			
+			dispatch_sync(dispatch_get_main_queue(), ^{
+				finderIcon = [[FILFileIconView alloc] initWithURL:currFile];
+				[finderIcon sizeToFit];
+				newFrame = (NSRect){ currPos, finderIcon.frame.size };
+			});
+			
+			if (NSMaxX(newFrame) > box.size.width)
+			{
+				newFrame.origin.x = 10;
+				newFrame.origin.y += newFrame.size.height + 10;
+				currPos = newFrame.origin;
+			}
+			
+			if (maxSize.width < NSMaxX(newFrame))
+				maxSize.width = NSMaxX(newFrame);
+			if (maxSize.height < NSMaxY(newFrame))
+				maxSize.height = NSMaxY(newFrame);
+			
+
+			currPos.x = NSMaxX(newFrame) + 10;
+			
+			dispatch_sync(dispatch_get_main_queue(), ^{
+				finderIcon.frame = newFrame;
+				finderIcon.action = @selector(testAction:);
+				finderIcon.target = self;
+				finderIcon.buttonType = NSButtonTypeMomentaryChange;
+
+				[self.filesView addSubview: finderIcon];
+				self.filesView.frame = NSMakeRect(0, 0, maxSize.width + 10, maxSize.height + 10);
+			});
 		}
-
-		if (maxSize.width < NSMaxX(newFrame))
-			maxSize.width = NSMaxX(newFrame);
-		if (maxSize.height < NSMaxY(newFrame))
-			maxSize.height = NSMaxY(newFrame);
-		
-		finderIcon.frame = newFrame;
-		
-		currPos.x = NSMaxX(newFrame) + 10;
-		
-		finderIcon.action = @selector(testAction:);
-		finderIcon.target = self;
-		finderIcon.buttonType = NSButtonTypeMomentaryChange;
-
-		previousView = finderIcon;
-	}
-	self.filesView.frame = NSMakeRect(0, 0, maxSize.width + 10, maxSize.height + 10);
+	});
 }
 
 
