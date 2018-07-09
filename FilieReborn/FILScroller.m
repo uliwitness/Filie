@@ -229,7 +229,7 @@ typedef enum _FILScrollerHitPart
 		myHitPart = NSScrollerDecrementLine;
 		[self sendAction:self.action to:self.target];
 		
-		self.trackingRepeatTimer = [NSTimer scheduledTimerWithTimeInterval: 0.1 target: self selector: @selector(arrowTrackingTimer:) userInfo: nil repeats: YES];
+		self.trackingRepeatTimer = [NSTimer scheduledTimerWithTimeInterval: 0.1 target: self selector: @selector(trackingRepeatTimer:) userInfo: nil repeats: YES];
 	}
 	else if (NSPointInRect(self.trackStartPos, maxArrowBox))
 	{
@@ -237,7 +237,7 @@ typedef enum _FILScrollerHitPart
 		myHitPart = NSScrollerIncrementLine;
 		[self sendAction:self.action to:self.target];
 
-		self.trackingRepeatTimer = [NSTimer scheduledTimerWithTimeInterval: 0.1 target: self selector: @selector(arrowTrackingTimer:) userInfo: nil repeats: YES];
+		self.trackingRepeatTimer = [NSTimer scheduledTimerWithTimeInterval: 0.1 target: self selector: @selector(trackingRepeatTimer:) userInfo: nil repeats: YES];
 	}
 	else if (NSPointInRect(self.trackStartPos, knobBox))
 		self.trackedPart = FILScrollerHitPartKnob;
@@ -247,11 +247,15 @@ typedef enum _FILScrollerHitPart
 		{
 			myHitPart = NSScrollerDecrementPage;
 			self.trackedPart = FILScrollerHitPartMinPage;
+			
+			self.trackingRepeatTimer = [NSTimer scheduledTimerWithTimeInterval: 0.1 target: self selector: @selector(trackingRepeatTimer:) userInfo: nil repeats: YES];
 		}
 		else
 		{
 			myHitPart = NSScrollerIncrementPage;
 			self.trackedPart = FILScrollerHitPartMaxPage;
+			
+			self.trackingRepeatTimer = [NSTimer scheduledTimerWithTimeInterval: 0.1 target: self selector: @selector(trackingRepeatTimer:) userInfo: nil repeats: YES];
 		}
 		[self sendAction:self.action to:self.target];
 	}
@@ -262,7 +266,7 @@ typedef enum _FILScrollerHitPart
 }
 
 
--(void) arrowTrackingTimer: (NSTimer *)sender
+-(void) trackingRepeatTimer: (NSTimer *)sender
 {
 	[self sendAction:self.action to:self.target];
 }
