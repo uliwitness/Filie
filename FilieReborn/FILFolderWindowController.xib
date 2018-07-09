@@ -43,11 +43,11 @@
                                     </subviews>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
-                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="Uya-fm-YPL">
+                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="Uya-fm-YPL" customClass="FILScroller">
                                     <rect key="frame" x="1" y="227" width="480" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="bWo-KU-1kh">
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="bWo-KU-1kh" customClass="FILScroller">
                                     <rect key="frame" x="465" y="1" width="16" height="242"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
