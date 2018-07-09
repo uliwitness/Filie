@@ -24,6 +24,7 @@
 		5591C80A20F35354007F725E /* FILTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5591C80920F35354007F725E /* FILTextField.m */; };
 		5591C80D20F3A6AA007F725E /* FILScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5591C80C20F3A6AA007F725E /* FILScrollView.m */; };
 		5591C81020F3AEDF007F725E /* FILTitlebarStripesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5591C80F20F3AEDF007F725E /* FILTitlebarStripesView.m */; };
+		5591C81320F3B7C7007F725E /* FILCustomWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5591C81220F3B7C7007F725E /* FILCustomWindow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,8 @@
 		5591C80C20F3A6AA007F725E /* FILScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FILScrollView.m; sourceTree = "<group>"; };
 		5591C80E20F3AEDF007F725E /* FILTitlebarStripesView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FILTitlebarStripesView.h; sourceTree = "<group>"; };
 		5591C80F20F3AEDF007F725E /* FILTitlebarStripesView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FILTitlebarStripesView.m; sourceTree = "<group>"; };
+		5591C81120F3B7C7007F725E /* FILCustomWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FILCustomWindow.h; sourceTree = "<group>"; };
+		5591C81220F3B7C7007F725E /* FILCustomWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FILCustomWindow.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +142,7 @@
 				5591C80320F32AC9007F725E /* FILBackgroundView.m */,
 				5551B41620F2CCD200CE3140 /* FILDesktopWindowController.h */,
 				5551B41720F2CCD200CE3140 /* FILDesktopWindowController.m */,
+				5551B41D20F2D05300CE3140 /* FILDesktopWindowController.xib */,
 				5591C80520F332FD007F725E /* FILScroller.h */,
 				5591C80620F332FD007F725E /* FILScroller.m */,
 				5591C80B20F3A6AA007F725E /* FILScrollView.h */,
@@ -147,7 +151,8 @@
 				5591C80920F35354007F725E /* FILTextField.m */,
 				5591C80E20F3AEDF007F725E /* FILTitlebarStripesView.h */,
 				5591C80F20F3AEDF007F725E /* FILTitlebarStripesView.m */,
-				5551B41D20F2D05300CE3140 /* FILDesktopWindowController.xib */,
+				5591C81120F3B7C7007F725E /* FILCustomWindow.h */,
+				5591C81220F3B7C7007F725E /* FILCustomWindow.m */,
 				5551B41320F2C2D500CE3140 /* NSString+FILMD5Hash.h */,
 				5551B41420F2C2D500CE3140 /* NSString+FILMD5Hash.m */,
 				5551B3E120F2AAF200CE3140 /* Assets.xcassets */,
@@ -323,6 +328,7 @@
 				5591C80420F32AC9007F725E /* FILBackgroundView.m in Sources */,
 				5591C80D20F3A6AA007F725E /* FILScrollView.m in Sources */,
 				5551B41820F2CCD200CE3140 /* FILDesktopWindowController.m in Sources */,
+				5591C81320F3B7C7007F725E /* FILCustomWindow.m in Sources */,
 				5551B41220F2B05400CE3140 /* FILFileIconView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

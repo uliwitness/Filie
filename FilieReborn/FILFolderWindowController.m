@@ -186,6 +186,10 @@ NSString *FILWindowRectKey = @"FILWindowRect";
 	[(FILAppDelegate *)NSApplication.sharedApplication.delegate openURL: theURL];
 }
 
+
+#pragma - NSWindow Delegate
+
+
 -(void)	windowDidMove: (NSNotification *)notification
 {
 	NSMutableDictionary *infoDictionary = [self.folderInfo mutableCopy];

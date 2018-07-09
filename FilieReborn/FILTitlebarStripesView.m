@@ -19,7 +19,7 @@
 		NSPoint startPos = { NSMinX(self.bounds) + 2, NSMinY(self.bounds) + 3 };
 		NSPoint endPos = { NSMaxX(self.bounds) - 2, NSMinY(self.bounds) + 3 };
 		
-		while (startPos.y < (NSMaxY(self.bounds) - 3))
+		while (startPos.y < (NSMaxY(self.bounds) - 2))
 		{
 			[NSBezierPath strokeLineFromPoint: startPos toPoint: endPos];
 			
@@ -57,6 +57,24 @@
 		[NSNotificationCenter.defaultCenter addObserver: self selector: @selector(keyOrMainStatusDidChange:) name: NSWindowDidResignMainNotification object: self.window];
 		[self setNeedsDisplay: YES];
 	}
+}
+
+
+-(void) mouseDown: (NSEvent *)event
+{
+	[self.window performWindowDragWithEvent: event];
+}
+
+
+//- (BOOL)acceptsFirstMouse:(nullable NSEvent *)event
+//{
+//	return YES;
+//}
+
+
+-(BOOL)mouseDownCanMoveWindow
+{
+	return YES;
 }
 
 @end
