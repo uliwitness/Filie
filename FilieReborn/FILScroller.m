@@ -259,7 +259,9 @@ typedef enum _FILScrollerHitPart
 	if (self.window)
 	{
 		[NSNotificationCenter.defaultCenter removeObserver: self name: NSWindowDidBecomeKeyNotification object: self.window];
+		[NSNotificationCenter.defaultCenter removeObserver: self name: NSWindowDidResignKeyNotification object: self.window];
 		[NSNotificationCenter.defaultCenter removeObserver: self name: NSWindowDidBecomeMainNotification object: self.window];
+		[NSNotificationCenter.defaultCenter removeObserver: self name: NSWindowDidResignMainNotification object: self.window];
 	}
 }
 
@@ -275,7 +277,9 @@ typedef enum _FILScrollerHitPart
 	if (self.window)
 	{
 		[NSNotificationCenter.defaultCenter addObserver: self selector: @selector(keyOrMainStatusDidChange:) name: NSWindowDidBecomeKeyNotification object: self.window];
+		[NSNotificationCenter.defaultCenter addObserver: self selector: @selector(keyOrMainStatusDidChange:) name: NSWindowDidResignKeyNotification object: self.window];
 		[NSNotificationCenter.defaultCenter addObserver: self selector: @selector(keyOrMainStatusDidChange:) name: NSWindowDidBecomeMainNotification object: self.window];
+		[NSNotificationCenter.defaultCenter addObserver: self selector: @selector(keyOrMainStatusDidChange:) name: NSWindowDidResignMainNotification object: self.window];
 		[self setNeedsDisplay: YES];
 	}
 }
