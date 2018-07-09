@@ -30,7 +30,7 @@
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="5Rw-tZ-48w">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <subviews>
-                            <scrollView borderType="line" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8o-Fv-cw5">
+                            <scrollView borderType="line" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8o-Fv-cw5" customClass="FILScrollView">
                                 <rect key="frame" x="-1" y="-1" width="482" height="249"/>
                                 <clipView key="contentView" id="PFF-yE-eiM">
                                     <rect key="frame" x="1" y="1" width="480" height="247"/>
@@ -100,27 +100,22 @@
                                 <color key="borderColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </box>
-                            <box boxType="custom" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="pAH-jP-24k">
-                                <rect key="frame" x="464" y="-1" width="17" height="17"/>
-                                <view key="contentView" id="7nk-Jq-BiE">
-                                    <rect key="frame" x="1" y="1" width="15" height="15"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g2z-w0-wDg">
+                                <rect key="frame" x="465" y="-1" width="16" height="16"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="17" id="5uA-L0-nZ1"/>
-                                    <constraint firstAttribute="height" constant="17" id="HQg-ob-2pG"/>
+                                    <constraint firstAttribute="height" constant="16" id="gjb-zi-bJV"/>
+                                    <constraint firstAttribute="width" constant="16" id="y8y-F3-1u9"/>
                                 </constraints>
-                                <color key="borderColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <color key="fillColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </box>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="growBox" id="CR6-Gs-WZ2"/>
+                            </imageView>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="g2z-w0-wDg" secondAttribute="bottom" constant="-1" id="3ER-ia-xsK"/>
+                            <constraint firstAttribute="trailing" secondItem="g2z-w0-wDg" secondAttribute="trailing" constant="-1" id="GLf-Ya-7en"/>
                             <constraint firstItem="p8o-Fv-cw5" firstAttribute="top" secondItem="edo-Dd-zyZ" secondAttribute="bottom" constant="1" id="MFl-yA-gTH"/>
                             <constraint firstAttribute="trailing" secondItem="p8o-Fv-cw5" secondAttribute="trailing" constant="-1" id="MUc-b7-wt4"/>
                             <constraint firstAttribute="trailing" secondItem="edo-Dd-zyZ" secondAttribute="trailing" constant="-1" id="Nfp-5v-Osh"/>
                             <constraint firstItem="edo-Dd-zyZ" firstAttribute="top" secondItem="5Rw-tZ-48w" secondAttribute="top" constant="-1" id="cc7-NE-DLa"/>
-                            <constraint firstAttribute="bottom" secondItem="pAH-jP-24k" secondAttribute="bottom" constant="-1" id="h2C-qe-3oI"/>
-                            <constraint firstAttribute="trailing" secondItem="pAH-jP-24k" secondAttribute="trailing" constant="-1" id="jkj-8a-IQs"/>
                             <constraint firstItem="p8o-Fv-cw5" firstAttribute="leading" secondItem="5Rw-tZ-48w" secondAttribute="leading" constant="-1" id="li7-8G-kVz"/>
                             <constraint firstAttribute="bottom" secondItem="p8o-Fv-cw5" secondAttribute="bottom" constant="-1" id="s23-QQ-HGL"/>
                             <constraint firstItem="edo-Dd-zyZ" firstAttribute="leading" secondItem="5Rw-tZ-48w" secondAttribute="leading" constant="-1" id="wig-fZ-cZO"/>
@@ -139,4 +134,7 @@
             </connections>
         </window>
     </objects>
+    <resources>
+        <image name="growBox" width="16" height="16"/>
+    </resources>
 </document>

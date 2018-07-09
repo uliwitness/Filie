@@ -22,6 +22,7 @@
 		5591C80420F32AC9007F725E /* FILBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5591C80320F32AC9007F725E /* FILBackgroundView.m */; };
 		5591C80720F332FD007F725E /* FILScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 5591C80620F332FD007F725E /* FILScroller.m */; };
 		5591C80A20F35354007F725E /* FILTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5591C80920F35354007F725E /* FILTextField.m */; };
+		5591C80D20F3A6AA007F725E /* FILScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5591C80C20F3A6AA007F725E /* FILScrollView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,8 @@
 		5591C80620F332FD007F725E /* FILScroller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FILScroller.m; sourceTree = "<group>"; };
 		5591C80820F35354007F725E /* FILTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FILTextField.h; sourceTree = "<group>"; };
 		5591C80920F35354007F725E /* FILTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FILTextField.m; sourceTree = "<group>"; };
+		5591C80B20F3A6AA007F725E /* FILScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FILScrollView.h; sourceTree = "<group>"; };
+		5591C80C20F3A6AA007F725E /* FILScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FILScrollView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +138,8 @@
 				5551B41720F2CCD200CE3140 /* FILDesktopWindowController.m */,
 				5591C80520F332FD007F725E /* FILScroller.h */,
 				5591C80620F332FD007F725E /* FILScroller.m */,
+				5591C80B20F3A6AA007F725E /* FILScrollView.h */,
+				5591C80C20F3A6AA007F725E /* FILScrollView.m */,
 				5591C80820F35354007F725E /* FILTextField.h */,
 				5591C80920F35354007F725E /* FILTextField.m */,
 				5551B41D20F2D05300CE3140 /* FILDesktopWindowController.xib */,
@@ -310,6 +315,7 @@
 				5551B40E20F2AC1D00CE3140 /* FILFolderWindowController.m in Sources */,
 				5551B3E020F2AAEF00CE3140 /* FILAppDelegate.m in Sources */,
 				5591C80420F32AC9007F725E /* FILBackgroundView.m in Sources */,
+				5591C80D20F3A6AA007F725E /* FILScrollView.m in Sources */,
 				5551B41820F2CCD200CE3140 /* FILDesktopWindowController.m in Sources */,
 				5551B41220F2B05400CE3140 /* FILFileIconView.m in Sources */,
 			);
