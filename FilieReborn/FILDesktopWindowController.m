@@ -20,8 +20,8 @@
 
 - (void)windowDidLoad
 {
-    [super windowDidLoad];
-	
+	self.iconLayout = FILIconLayout.desktopLayout;
+
 	self.window.level = kCGDesktopIconWindowLevel;
 	
 	NSScreen * theScreen = NSScreen.screens.firstObject;
@@ -38,6 +38,8 @@
 //	NSDictionary<NSWorkspaceDesktopImageOptionKey, id> *desktopImageOptions = [NSWorkspace.sharedWorkspace desktopImageOptionsForScreen: theScreen];
 	NSImage *desktopImage = [[NSImage alloc] initWithContentsOfURL: desktopImageURL];
 	self.desktopImageView.image = desktopImage;
+
+	[super windowDidLoad];
 }
 
 - (NSArray<NSURL *> *)files // Called on our own dispatch queue!

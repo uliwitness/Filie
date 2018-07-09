@@ -112,6 +112,7 @@ NSString *FILWindowRectKey = @"FILWindowRect";
 	
 	NSRect box = self.preferredWindowFrame;
 	[wd setFrame: box display: NO];
+	NSRect localWindowRect = { NSZeroPoint, box.size };
 	
 	self.iconsScrollView.horizontalScroller.scrollerStyle = NSScrollerStyleLegacy;
 	self.iconsScrollView.verticalScroller.scrollerStyle = NSScrollerStyleLegacy;
@@ -121,9 +122,14 @@ NSString *FILWindowRectKey = @"FILWindowRect";
 	
 	self.filesView.translatesAutoresizingMaskIntoConstraints = YES;
 	
+	if (!self.iconLayout)
+	{
+		self.iconLayout = FILIconLayout.defaultLayout;
+	}
+	
 	dispatch_async(_dispatchQueue, ^{
-		NSPoint currPos = NSMakePoint(10, 10);
 		NSFileManager *fileManager = [NSFileManager new];
+		NSPoint currPos = [self.iconLayout startPositionInRect: localWindowRect];
 		NSSize maxSize = NSZeroSize;
 
 		NSArray<NSURL *> *files = [self.files sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
@@ -139,7 +145,7 @@ NSString *FILWindowRectKey = @"FILWindowRect";
 			self.diskSpaceUsedField.stringValue = [NSString stringWithFormat:@"%.2f GB on disk", [folderAttrs[NSFileSystemSize] doubleValue] / 1000000000.0];
 			self.diskSpaceAvailableField.stringValue = [NSString stringWithFormat:@"%.2f GB available", [folderAttrs[NSFileSystemFreeSize] doubleValue] / 1000000000.0];
 		});
-
+		
 		for (NSURL *currFile in files)
 		{
 			__block NSRect newFrame = {};
@@ -151,20 +157,14 @@ NSString *FILWindowRectKey = @"FILWindowRect";
 				newFrame = (NSRect){ currPos, finderIcon.frame.size };
 			});
 			
-			if (NSMaxX(newFrame) > box.size.width)
-			{
-				newFrame.origin.x = 10;
-				newFrame.origin.y += newFrame.size.height + 10;
-				currPos = newFrame.origin;
-			}
-			
+			newFrame = [self.iconLayout placeFrame: newFrame inRect: localWindowRect updatingPoint: &currPos];
+
 			if (maxSize.width < NSMaxX(newFrame))
 				maxSize.width = NSMaxX(newFrame);
 			if (maxSize.height < NSMaxY(newFrame))
 				maxSize.height = NSMaxY(newFrame);
-			
 
-			currPos.x = NSMaxX(newFrame) + 10;
+			currPos = [self.iconLayout advancePoint: currPos afterPlacingRect: newFrame inRect: box];
 			
 			dispatch_sync(dispatch_get_main_queue(), ^{
 				finderIcon.frame = newFrame;
@@ -211,5 +211,96 @@ NSString *FILWindowRectKey = @"FILWindowRect";
 {
 	[(FILAppDelegate *)NSApplication.sharedApplication.delegate removeWindowController: self];
 }
+
+@end
+
+
+@interface FILDesktopIconLayout : FILIconLayout // This entire object must be safe to use from multiple threads.
+@end
+
+
+@implementation FILDesktopIconLayout
+
+-(NSPoint)	startPositionInRect: (NSRect)windowRect
+{
+	NSPoint pos = { NSMaxX(windowRect) - 10, NSMinY(windowRect) + 10 };
+	return pos;
+}
+
+-(NSRect)	placeFrame: (NSRect)newFrame inRect: (NSRect)windowRect updatingPoint: (NSPoint *)currPos
+{
+	newFrame.origin.x -= newFrame.size.width;
+	
+	if (NSMaxY(newFrame) > NSMaxY(windowRect))
+	{
+		currPos->y = NSMinY(windowRect) + 10;
+		newFrame.origin = *currPos;
+		newFrame.origin.x -= newFrame.size.width; // TODO: should be width of first item in row, not this one.
+		
+	}
+	
+	return newFrame;
+}
+
+-(NSPoint)	advancePoint: (NSPoint)currPos afterPlacingRect: (NSRect)newFrame inRect: (NSRect)windowRect
+{
+	currPos.y = NSMaxY(newFrame) + 10;
+	
+	return currPos;
+}
+
+@end
+
+
+
+@implementation FILIconLayout
+
++(FILIconLayout *)defaultLayout
+{
+	static FILIconLayout *sDefaultLayout = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		sDefaultLayout = [FILIconLayout new];
+	});
+	
+	return sDefaultLayout;
+}
+
++(FILIconLayout *)desktopLayout
+{
+	static FILIconLayout *sDesktopLayout = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		sDesktopLayout = [FILDesktopIconLayout new];
+	});
+	
+	return sDesktopLayout;
+}
+
+-(NSPoint) startPositionInRect: (NSRect)windowRect
+{
+	NSPoint pos = { windowRect.origin.x + 10, windowRect.origin.y + 10 };
+	return pos;
+}
+
+-(NSRect) placeFrame: (NSRect)newFrame inRect: (NSRect)windowRect updatingPoint: (NSPoint *)currPos
+{
+	if (NSMaxX(newFrame) > NSMaxX(windowRect))
+	{
+		newFrame.origin.x = NSMinX(windowRect) + 10;
+		newFrame.origin.y += newFrame.size.height + 10;
+		*currPos = newFrame.origin;
+	}
+	
+	return newFrame;
+}
+
+-(NSPoint) advancePoint: (NSPoint)currPos afterPlacingRect: (NSRect)newFrame inRect: (NSRect)windowRect
+{
+	currPos.x = NSMaxX(newFrame) + 10;
+	
+	return currPos;
+}
+
 
 @end
