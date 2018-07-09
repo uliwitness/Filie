@@ -109,7 +109,7 @@
                                 <color key="borderColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </box>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g2z-w0-wDg">
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g2z-w0-wDg" customClass="FILActiveOnlyImageView">
                                 <rect key="frame" x="464" y="0.0" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="gjb-zi-bJV"/>
