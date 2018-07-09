@@ -301,6 +301,13 @@ typedef enum _FILScrollerHitPart
 }
 
 
+-(void)setFloatValue:(float)floatValue
+{
+	[super setFloatValue: floatValue];
+	[self setNeedsDisplay: YES];
+}
+
+
 -(void) viewWillMoveToWindow:(NSWindow *)newWindow
 {
 	if (self.window)
