@@ -20,7 +20,20 @@
 		self.imagePosition = NSImageAbove;
 		self.translatesAutoresizingMaskIntoConstraints = YES;
 		self.title = [NSFileManager.defaultManager displayNameAtPath: fileURL.path];
-		self.image = [NSWorkspace.sharedWorkspace iconForFile: fileURL.path];
+		
+		NSImage *currImage = nil;
+		NSURL * _Nullable associatedAppURL = [NSWorkspace.sharedWorkspace URLForApplicationToOpenURL: fileURL];
+		if (associatedAppURL)
+		{
+			currImage = [NSWorkspace.sharedWorkspace iconForFile: fileURL.path];
+		}
+		else
+		{
+			currImage = [NSImage imageNamed: @"GenericDocumentIcon"];
+			currImage.size = NSMakeSize(32, 32);
+		}
+		self.image = currImage;
+
 		self.fileURL = fileURL;
 		self.bordered = NO;
 	}
