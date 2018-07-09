@@ -138,7 +138,7 @@ NSString *FILWindowRectKey = @"FILWindowRect";
 //		NSDictionary<NSFileAttributeKey, id> *fileAttrs = [fileManager attributesOfItemAtPath: self.folderURL.path error: &err];
 //		NSLog(@"fileAttrs = %@", fileAttrs);
 		NSDictionary<NSFileAttributeKey, id> *folderAttrs = [fileManager attributesOfFileSystemForPath: self.folderURL.path error: &err];
-		NSLog(@"folderAttrs = %@", folderAttrs);
+		//NSLog(@"folderAttrs = %@", folderAttrs);
 
 		dispatch_sync(dispatch_get_main_queue(), ^{
 			self.numberOfObjectsField.stringValue = [NSString stringWithFormat:@"%zu Objects", files.count];

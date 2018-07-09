@@ -140,7 +140,8 @@ typedef enum _FILScrollerHitPart
 	BOOL isNecessary = self.knobProportion > 0.0 && self.knobProportion < 1.0;
 	if (isNecessary)
 		isNecessary = self.isEnabled;
-	
+	BOOL isHorzNotVert = self.bounds.size.width > self.bounds.size.height;
+
 	NSRect minArrowBox;
 	NSRect maxArrowBox;
 	NSRect trackBox;
@@ -154,7 +155,9 @@ typedef enum _FILScrollerHitPart
 	
 	if (isNecessary && isActiveWindow)
 	{
-		[NSColor.lightGrayColor setFill];
+		NSImage *pattern = [NSImage imageNamed: @"scrollTrackPattern"];
+		NSColor *patternColor = [NSColor colorWithPatternImage: pattern];
+		[patternColor setFill];
 		[NSBezierPath fillRect: trackBox];
 	}
 
@@ -163,18 +166,32 @@ typedef enum _FILScrollerHitPart
 	
 	if (isActiveWindow)
 	{
-		if (self.trackedPart == FILScrollerHitPartMinArrow)
-		{
-			[NSColor.blackColor setFill];
-			[NSBezierPath fillRect: minArrowBox];
-		}
+		[NSGraphicsContext saveGraphicsState];
+
+		NSAffineTransform *minArrowTransform = [NSAffineTransform transform];
+		[minArrowTransform translateXBy:NSMidX(minArrowBox) yBy:NSMidY(minArrowBox)];
+		if (isHorzNotVert)
+			[minArrowTransform rotateByDegrees: -90.0];
+		[minArrowTransform concat];
+
+		NSImage *upArrowImage = (self.trackedPart == FILScrollerHitPartMinArrow) ? [NSImage imageNamed:@"scrollArrowUpPressed"] : [NSImage imageNamed:@"scrollArrowUp"];
+		[upArrowImage drawInRect:(NSRect){ { minArrowBox.size.width / -2.0, minArrowBox.size.height / -2.0 }, minArrowBox.size }];
+		[NSGraphicsContext restoreGraphicsState];
+
 		[NSBezierPath strokeRect: [self rectForStroking: minArrowBox]];
 		
-		if (self.trackedPart == FILScrollerHitPartMaxArrow)
-		{
-			[NSColor.blackColor setFill];
-			[NSBezierPath fillRect: maxArrowBox];
-		}
+		[NSGraphicsContext saveGraphicsState];
+		NSAffineTransform *maxArrowTransform = [NSAffineTransform transform];
+		[maxArrowTransform translateXBy:NSMidX(maxArrowBox) yBy:NSMidY(maxArrowBox)];
+		[maxArrowTransform scaleXBy: 1.0 yBy: -1.0];
+		if (isHorzNotVert)
+			[maxArrowTransform rotateByDegrees: 90.0];
+		[maxArrowTransform concat];
+		
+		upArrowImage = (self.trackedPart == FILScrollerHitPartMaxArrow) ? [NSImage imageNamed:@"scrollArrowUpPressed"] : [NSImage imageNamed:@"scrollArrowUp"];
+		[upArrowImage drawInRect:(NSRect){ { maxArrowBox.size.width / -2.0, maxArrowBox.size.height / -2.0 }, maxArrowBox.size }];
+		[NSGraphicsContext restoreGraphicsState];
+		
 		[NSBezierPath strokeRect: [self rectForStroking: maxArrowBox]];
 		
 		if (isNecessary)
