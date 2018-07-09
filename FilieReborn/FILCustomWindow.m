@@ -32,4 +32,9 @@
 	[self zoom: self];
 }
 
+-(NSWindowStyleMask)styleMask
+{
+	return super.styleMask | NSWindowStyleMaskTitled | NSWindowStyleMaskResizable; // So we show up in the window menu.
+}
+
 @end
