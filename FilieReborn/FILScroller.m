@@ -21,6 +21,9 @@ typedef enum _FILScrollerHitPart
 
 
 @interface FILScroller ()
+{
+	NSScrollerPart myHitPart;
+}
 
 @property FILScrollerHitPart trackedPart;
 @property NSPoint trackStartPos;
@@ -176,11 +179,24 @@ typedef enum _FILScrollerHitPart
 			newValue = 0;
 		
 		self.doubleValue = newValue;
-		
+		myHitPart = NSScrollerKnob;
 		[self sendAction:self.action to:self.target];
 		
 		[self setNeedsDisplay: YES];
 	}
+}
+
+
+-(void)setHitPart: (NSScrollerPart)inPart
+{
+	myHitPart = inPart;
+	
+	[self setNeedsDisplay: YES];
+}
+
+-(NSScrollerPart)hitPart
+{
+	return myHitPart;
 }
 
 
