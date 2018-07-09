@@ -10,6 +10,8 @@
 
 @implementation FILTextField
 
+@synthesize mouseDownCanMoveWindow;
+
 - (void)drawRect:(NSRect)dirtyRect
 {
 	BOOL antiAlias = NSGraphicsContext.currentContext.shouldAntialias;

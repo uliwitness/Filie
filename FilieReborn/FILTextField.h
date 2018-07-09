@@ -10,6 +10,6 @@
 
 @interface FILTextField : NSTextField
 
-@property IBInspectable BOOL mouseDownCanMoveWindow;
+@property (readwrite) IBInspectable BOOL mouseDownCanMoveWindow;
 
 @end
