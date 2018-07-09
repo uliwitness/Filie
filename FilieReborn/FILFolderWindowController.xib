@@ -31,53 +31,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <subviews>
                             <scrollView borderType="line" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8o-Fv-cw5">
-                                <rect key="frame" x="-1" y="-1" width="482" height="244"/>
+                                <rect key="frame" x="-1" y="-1" width="482" height="249"/>
                                 <clipView key="contentView" id="PFF-yE-eiM">
-                                    <rect key="frame" x="1" y="1" width="480" height="242"/>
+                                    <rect key="frame" x="1" y="1" width="480" height="247"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b1U-wQ-MwJ" customClass="FILBackgroundView">
-                                            <rect key="frame" x="0.0" y="146" width="163" height="96"/>
+                                            <rect key="frame" x="0.0" y="151" width="163" height="96"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </customView>
                                     </subviews>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="Uya-fm-YPL" customClass="FILScroller">
-                                    <rect key="frame" x="1" y="227" width="480" height="16"/>
+                                    <rect key="frame" x="1" y="232" width="480" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="bWo-KU-1kh" customClass="FILScroller">
-                                    <rect key="frame" x="465" y="1" width="16" height="242"/>
+                                    <rect key="frame" x="465" y="1" width="16" height="247"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                             <box boxType="custom" borderType="line" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="edo-Dd-zyZ">
-                                <rect key="frame" x="-1" y="244" width="482" height="27"/>
+                                <rect key="frame" x="-1" y="249" width="482" height="22"/>
                                 <view key="contentView" id="nT1-dR-Va7">
-                                    <rect key="frame" x="1" y="1" width="480" height="25"/>
+                                    <rect key="frame" x="1" y="1" width="480" height="20"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Aad-03-Gex">
-                                            <rect key="frame" x="6" y="4" width="67" height="17"/>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Aad-03-Gex" customClass="FILTextField">
+                                            <rect key="frame" x="6" y="4" width="48" height="12"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="-- Objects" id="Tdv-Xn-Fea">
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" size="9" name="Geneva"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qMH-Lq-uKu">
-                                            <rect key="frame" x="208" y="4" width="64" height="17"/>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qMH-Lq-uKu" customClass="FILTextField">
+                                            <rect key="frame" x="218" y="4" width="45" height="12"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="-- on disk" id="FLi-yP-4Tn">
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" size="9" name="Geneva"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YxV-xq-zT7">
-                                            <rect key="frame" x="397" y="4" width="77" height="17"/>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YxV-xq-zT7" customClass="FILTextField">
+                                            <rect key="frame" x="420" y="4" width="54" height="12"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="-- available." id="ZgZ-AU-AQG">
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" size="9" name="Geneva"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
