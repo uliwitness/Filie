@@ -46,6 +46,7 @@ NSString *FILWindowRectKey = @"FILWindowRect";
 	{
 		_folderURL = folderURL;
 		_dispatchQueue = dispatch_queue_create(folderURL.path.UTF8String, DISPATCH_QUEUE_SERIAL);
+		self.shouldCascadeWindows = NO;
 	}
 	return self;
 }
@@ -122,11 +123,21 @@ NSString *FILWindowRectKey = @"FILWindowRect";
 	
 	dispatch_async(_dispatchQueue, ^{
 		NSPoint currPos = NSMakePoint(10, 10);
+		NSFileManager *fileManager = [NSFileManager new];
 		NSSize maxSize = NSZeroSize;
 
 		NSArray<NSURL *> *files = [self.files sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+
+		NSError *err = nil;
+//		NSDictionary<NSFileAttributeKey, id> *fileAttrs = [fileManager attributesOfItemAtPath: self.folderURL.path error: &err];
+//		NSLog(@"fileAttrs = %@", fileAttrs);
+		NSDictionary<NSFileAttributeKey, id> *folderAttrs = [fileManager attributesOfFileSystemForPath: self.folderURL.path error: &err];
+		NSLog(@"folderAttrs = %@", folderAttrs);
+
 		dispatch_sync(dispatch_get_main_queue(), ^{
 			self.numberOfObjectsField.stringValue = [NSString stringWithFormat:@"%zu Objects", files.count];
+			self.diskSpaceUsedField.stringValue = [NSString stringWithFormat:@"%.2f GB on disk", [folderAttrs[NSFileSystemSize] doubleValue] / 1000000000.0];
+			self.diskSpaceAvailableField.stringValue = [NSString stringWithFormat:@"%.2f GB available", [folderAttrs[NSFileSystemFreeSize] doubleValue] / 1000000000.0];
 		});
 
 		for (NSURL *currFile in files)

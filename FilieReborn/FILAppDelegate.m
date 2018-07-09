@@ -10,6 +10,10 @@
 #import "FILFolderWindowController.h"
 #import "FILDesktopWindowController.h"
 
+
+NSString *FILLastOpenedURLsKey = @"FILLastOpenedURLs";
+
+
 @interface FILAppDelegate ()
 
 @property (strong) NSMutableArray<FILFolderWindowController *> *allWindowControllers;
@@ -25,12 +29,37 @@
 	FILFolderWindowController *wc = [[FILDesktopWindowController alloc] initWithURL: [NSURL fileURLWithPath:[@"~/Desktop" stringByExpandingTildeInPath]]];
 	[self.allWindowControllers addObject:wc];
 	[wc showWindow: self];
+	
+	NSArray<NSString *> *lastOpenedURLStrings = [NSUserDefaults.standardUserDefaults objectForKey: FILLastOpenedURLsKey];
+	
+	if (!lastOpenedURLStrings) // First launch? Open the user's home directory.
+	{
+		[self openURL: [NSURL fileURLWithPath:[@"~" stringByExpandingTildeInPath]]];
+	}
+	else
+	{
+		for (NSString *currURLString in lastOpenedURLStrings.reverseObjectEnumerator)
+		{
+			NSURL *currURL = [NSURL URLWithString:currURLString];
+			[self openURL: currURL];
+		}
+	}
 }
 
 
 - (void)applicationWillTerminate: (NSNotification *)aNotification
 {
-	// Insert code here to tear down your application
+	NSMutableArray *openURLs = [NSMutableArray new];
+	[NSApplication.sharedApplication enumerateWindowsWithOptions:NSWindowListOrderedFrontToBack usingBlock:^(NSWindow * _Nonnull currWindow, BOOL * _Nonnull stop)
+	{
+		FILFolderWindowController *wc = (FILFolderWindowController *) currWindow.delegate;
+		if ([wc isKindOfClass: FILDesktopWindowController.class] || ![wc isKindOfClass: FILFolderWindowController.class])
+		{
+			return; // Skip this one.
+		}
+		[openURLs addObject:wc.folderURL.absoluteString];
+	}];
+	[NSUserDefaults.standardUserDefaults setObject: openURLs forKey: FILLastOpenedURLsKey];
 }
 
 -(void)application:(NSApplication *)application openURLs:(NSArray<NSURL *> *)urls

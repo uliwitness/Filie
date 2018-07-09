@@ -40,7 +40,7 @@
 	self.desktopImageView.image = desktopImage;
 }
 
-- (NSArray<NSURL *> *)files
+- (NSArray<NSURL *> *)files // Called on our own dispatch queue!
 {
 	NSError *err = nil;
 	NSArray<NSURL *> *files = [NSFileManager.defaultManager contentsOfDirectoryAtURL: self.folderURL includingPropertiesForKeys: @[] options: NSDirectoryEnumerationSkipsSubdirectoryDescendants | NSDirectoryEnumerationSkipsPackageDescendants | NSDirectoryEnumerationSkipsHiddenFiles error: &err];
