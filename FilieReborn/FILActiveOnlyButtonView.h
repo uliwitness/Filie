@@ -1,5 +1,5 @@
 //
-//  FILTextField.h
+//  FILActiveOnlyButtonView.h
 //  Filie
 //
 //  Created by Uli Kusterer on 09.07.18.
@@ -8,8 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface FILTextField : NSTextField
-
-@property IBInspectable BOOL mouseDownCanMoveWindow;
+@interface FILActiveOnlyButtonView : NSButton
 
 @end

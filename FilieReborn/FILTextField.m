@@ -20,4 +20,18 @@
 	NSGraphicsContext.currentContext.shouldAntialias = antiAlias;
 }
 
+-(void) mouseDown: (NSEvent *)event
+{
+	if (self.mouseDownCanMoveWindow && !self.isEditable && !self.isSelectable)
+	{
+		[self.window performWindowDragWithEvent: event];
+	}
+}
+
+
+- (BOOL)acceptsFirstMouse:(nullable NSEvent *)event
+{
+	return self.mouseDownCanMoveWindow;
+}
+
 @end

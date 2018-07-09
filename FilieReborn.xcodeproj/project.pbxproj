@@ -26,6 +26,7 @@
 		5591C81020F3AEDF007F725E /* FILTitlebarStripesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5591C80F20F3AEDF007F725E /* FILTitlebarStripesView.m */; };
 		5591C81320F3B7C7007F725E /* FILCustomWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5591C81220F3B7C7007F725E /* FILCustomWindow.m */; };
 		5591C81620F3BFC1007F725E /* FILActiveOnlyImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5591C81520F3BFC1007F725E /* FILActiveOnlyImageView.m */; };
+		5591C81920F3C0BC007F725E /* FILActiveOnlyButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5591C81820F3C0BB007F725E /* FILActiveOnlyButtonView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,8 @@
 		5591C81220F3B7C7007F725E /* FILCustomWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FILCustomWindow.m; sourceTree = "<group>"; };
 		5591C81420F3BFC1007F725E /* FILActiveOnlyImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FILActiveOnlyImageView.h; sourceTree = "<group>"; };
 		5591C81520F3BFC1007F725E /* FILActiveOnlyImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FILActiveOnlyImageView.m; sourceTree = "<group>"; };
+		5591C81720F3C0BA007F725E /* FILActiveOnlyButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FILActiveOnlyButtonView.h; sourceTree = "<group>"; };
+		5591C81820F3C0BB007F725E /* FILActiveOnlyButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FILActiveOnlyButtonView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +161,8 @@
 				5591C81220F3B7C7007F725E /* FILCustomWindow.m */,
 				5591C81420F3BFC1007F725E /* FILActiveOnlyImageView.h */,
 				5591C81520F3BFC1007F725E /* FILActiveOnlyImageView.m */,
+				5591C81720F3C0BA007F725E /* FILActiveOnlyButtonView.h */,
+				5591C81820F3C0BB007F725E /* FILActiveOnlyButtonView.m */,
 				5551B41320F2C2D500CE3140 /* NSString+FILMD5Hash.h */,
 				5551B41420F2C2D500CE3140 /* NSString+FILMD5Hash.m */,
 				5551B3E120F2AAF200CE3140 /* Assets.xcassets */,
@@ -327,6 +332,7 @@
 				5591C80A20F35354007F725E /* FILTextField.m in Sources */,
 				5591C80720F332FD007F725E /* FILScroller.m in Sources */,
 				5551B41520F2C2D500CE3140 /* NSString+FILMD5Hash.m in Sources */,
+				5591C81920F3C0BC007F725E /* FILActiveOnlyButtonView.m in Sources */,
 				5591C81020F3AEDF007F725E /* FILTitlebarStripesView.m in Sources */,
 				5551B40E20F2AC1D00CE3140 /* FILFolderWindowController.m in Sources */,
 				5551B3E020F2AAEF00CE3140 /* FILAppDelegate.m in Sources */,

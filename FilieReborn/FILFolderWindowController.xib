@@ -50,7 +50,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </customView>
                                     </subviews>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="Uya-fm-YPL" customClass="FILScroller">
                                     <rect key="frame" x="1" y="214" width="463" height="15"/>
@@ -133,7 +133,7 @@
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="DAe-Zn-xbh" customClass="FILTitlebarStripesView">
                         <rect key="frame" x="1" y="253" width="218" height="16"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uHo-o0-lsr">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uHo-o0-lsr" customClass="FILActiveOnlyButtonView">
                                 <rect key="frame" x="6" y="-8" width="13" height="32"/>
                                 <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="closeBox" imagePosition="only" alignment="center" alternateImage="closeBoxPressed" imageScaling="proportionallyDown" inset="2" id="CHa-kN-g5t">
                                     <behavior key="behavior" lightByContents="YES"/>
@@ -163,7 +163,7 @@
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="Msp-0O-WUA" customClass="FILTitlebarStripesView">
                         <rect key="frame" x="262" y="253" width="217" height="16"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ozF-N8-gfO">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ozF-N8-gfO" customClass="FILActiveOnlyButtonView">
                                 <rect key="frame" x="198" y="-8" width="13" height="32"/>
                                 <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="zoomBox" imagePosition="only" alignment="center" alternateImage="zoomBoxPressed" imageScaling="proportionallyDown" inset="2" id="w6K-2V-YYk">
                                     <behavior key="behavior" lightByContents="YES"/>

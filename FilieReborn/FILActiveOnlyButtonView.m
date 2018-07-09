@@ -1,33 +1,14 @@
 //
-//  FILTitlebarStripesView.m
+//  FILActiveOnlyButtonView.m
 //  Filie
 //
 //  Created by Uli Kusterer on 09.07.18.
 //  Copyright © 2018 Uli Kusterer. All rights reserved.
 //
 
-#import "FILTitlebarStripesView.h"
+#import "FILActiveOnlyButtonView.h"
 
-@implementation FILTitlebarStripesView
-
-- (void)drawRect:(NSRect)dirtyRect
-{
-	BOOL isActiveWindow = self.window != nil && (NSApplication.sharedApplication.mainWindow == self.window || NSApplication.sharedApplication.keyWindow == self.window);
-
-	if (isActiveWindow)
-	{
-		NSPoint startPos = { NSMinX(self.bounds) + 2, NSMinY(self.bounds) + 3 };
-		NSPoint endPos = { NSMaxX(self.bounds) - 2, NSMinY(self.bounds) + 3 };
-		
-		while (startPos.y < (NSMaxY(self.bounds) - 2))
-		{
-			[NSBezierPath strokeLineFromPoint: startPos toPoint: endPos];
-			
-			startPos.y += 2;
-			endPos.y += 2;
-		}
-	}
-}
+@implementation FILActiveOnlyButtonView
 
 -(void) viewWillMoveToWindow:(NSWindow *)newWindow
 {
@@ -43,7 +24,7 @@
 
 -(void)keyOrMainStatusDidChange: (NSNotification *)notification
 {
-	[self setNeedsDisplay: YES];
+	self.hidden = !self.window.isKeyWindow && !self.window.isMainWindow;
 }
 
 
@@ -55,26 +36,9 @@
 		[NSNotificationCenter.defaultCenter addObserver: self selector: @selector(keyOrMainStatusDidChange:) name: NSWindowDidResignKeyNotification object: self.window];
 		[NSNotificationCenter.defaultCenter addObserver: self selector: @selector(keyOrMainStatusDidChange:) name: NSWindowDidBecomeMainNotification object: self.window];
 		[NSNotificationCenter.defaultCenter addObserver: self selector: @selector(keyOrMainStatusDidChange:) name: NSWindowDidResignMainNotification object: self.window];
-		[self setNeedsDisplay: YES];
+
+		self.hidden = !self.window.isKeyWindow && !self.window.isMainWindow;
 	}
-}
-
-
--(void) mouseDown: (NSEvent *)event
-{
-	[self.window performWindowDragWithEvent: event];
-}
-
-
-- (BOOL)acceptsFirstMouse:(nullable NSEvent *)event
-{
-	return YES;
-}
-
-
--(BOOL)mouseDownCanMoveWindow
-{
-	return YES;
 }
 
 @end
