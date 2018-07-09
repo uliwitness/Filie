@@ -30,20 +30,20 @@ NSString *FILLastOpenedURLsKey = @"FILLastOpenedURLs";
 	[self.allWindowControllers addObject:wc];
 	[wc showWindow: self];
 	
-	NSArray<NSString *> *lastOpenedURLStrings = [NSUserDefaults.standardUserDefaults objectForKey: FILLastOpenedURLsKey];
-	
-	if (!lastOpenedURLStrings) // First launch? Open the user's home directory.
-	{
-		[self openURL: [NSURL fileURLWithPath:[@"~" stringByExpandingTildeInPath]]];
-	}
-	else
-	{
-		for (NSString *currURLString in lastOpenedURLStrings.reverseObjectEnumerator)
-		{
-			NSURL *currURL = [NSURL URLWithString:currURLString];
-			[self openURL: currURL];
-		}
-	}
+//	NSArray<NSString *> *lastOpenedURLStrings = [NSUserDefaults.standardUserDefaults objectForKey: FILLastOpenedURLsKey];
+//	
+//	if (!lastOpenedURLStrings) // First launch? Open the user's home directory.
+//	{
+//		[self openURL: [NSURL fileURLWithPath:[@"~" stringByExpandingTildeInPath]]];
+//	}
+//	else
+//	{
+//		for (NSString *currURLString in lastOpenedURLStrings.reverseObjectEnumerator)
+//		{
+//			NSURL *currURL = [NSURL URLWithString:currURLString];
+//			[self openURL: currURL];
+//		}
+//	}
 }
 
 

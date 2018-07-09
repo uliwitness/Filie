@@ -9,6 +9,7 @@
 #import "FILFolderWindowController.h"
 #import "FILFileIconView.h"
 #import "FILAppDelegate.h"
+#import "FILDSStore.h"
 #import "NSString+FILMD5Hash.h"
 
 
@@ -140,6 +141,8 @@ NSString *FILWindowRectKey = @"FILWindowRect";
 		NSDictionary<NSFileAttributeKey, id> *folderAttrs = [fileManager attributesOfFileSystemForPath: self.folderURL.path error: &err];
 		//NSLog(@"folderAttrs = %@", folderAttrs);
 
+		FILDSStore * dsStore = [[FILDSStore alloc] initWithURL: [self.folderURL URLByAppendingPathComponent: @".DS_Store"]];
+		
 		dispatch_sync(dispatch_get_main_queue(), ^{
 			self.numberOfObjectsField.stringValue = [NSString stringWithFormat:@"%zu Objects", files.count];
 			self.diskSpaceUsedField.stringValue = [NSString stringWithFormat:@"%.2f GB on disk", [folderAttrs[NSFileSystemSize] doubleValue] / 1000000000.0];

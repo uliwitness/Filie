@@ -27,6 +27,7 @@
 		5591C81320F3B7C7007F725E /* FILCustomWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5591C81220F3B7C7007F725E /* FILCustomWindow.m */; };
 		5591C81620F3BFC1007F725E /* FILActiveOnlyImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5591C81520F3BFC1007F725E /* FILActiveOnlyImageView.m */; };
 		5591C81920F3C0BC007F725E /* FILActiveOnlyButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5591C81820F3C0BB007F725E /* FILActiveOnlyButtonView.m */; };
+		5591C81C20F3E52F007F725E /* FILDSStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 5591C81B20F3E52F007F725E /* FILDSStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,8 @@
 		5591C81520F3BFC1007F725E /* FILActiveOnlyImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FILActiveOnlyImageView.m; sourceTree = "<group>"; };
 		5591C81720F3C0BA007F725E /* FILActiveOnlyButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FILActiveOnlyButtonView.h; sourceTree = "<group>"; };
 		5591C81820F3C0BB007F725E /* FILActiveOnlyButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FILActiveOnlyButtonView.m; sourceTree = "<group>"; };
+		5591C81A20F3E52F007F725E /* FILDSStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FILDSStore.h; sourceTree = "<group>"; };
+		5591C81B20F3E52F007F725E /* FILDSStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FILDSStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,22 +152,11 @@
 				5551B41620F2CCD200CE3140 /* FILDesktopWindowController.h */,
 				5551B41720F2CCD200CE3140 /* FILDesktopWindowController.m */,
 				5551B41D20F2D05300CE3140 /* FILDesktopWindowController.xib */,
-				5591C80520F332FD007F725E /* FILScroller.h */,
-				5591C80620F332FD007F725E /* FILScroller.m */,
-				5591C80B20F3A6AA007F725E /* FILScrollView.h */,
-				5591C80C20F3A6AA007F725E /* FILScrollView.m */,
-				5591C80820F35354007F725E /* FILTextField.h */,
-				5591C80920F35354007F725E /* FILTextField.m */,
-				5591C80E20F3AEDF007F725E /* FILTitlebarStripesView.h */,
-				5591C80F20F3AEDF007F725E /* FILTitlebarStripesView.m */,
-				5591C81120F3B7C7007F725E /* FILCustomWindow.h */,
-				5591C81220F3B7C7007F725E /* FILCustomWindow.m */,
-				5591C81420F3BFC1007F725E /* FILActiveOnlyImageView.h */,
-				5591C81520F3BFC1007F725E /* FILActiveOnlyImageView.m */,
-				5591C81720F3C0BA007F725E /* FILActiveOnlyButtonView.h */,
-				5591C81820F3C0BB007F725E /* FILActiveOnlyButtonView.m */,
+				5591C81A20F3E52F007F725E /* FILDSStore.h */,
+				5591C81B20F3E52F007F725E /* FILDSStore.m */,
 				5551B41320F2C2D500CE3140 /* NSString+FILMD5Hash.h */,
 				5551B41420F2C2D500CE3140 /* NSString+FILMD5Hash.m */,
+				5591C81D20F3E553007F725E /* Classic Theme */,
 				5551B3E120F2AAF200CE3140 /* Assets.xcassets */,
 				5551B3E320F2AAF200CE3140 /* MainMenu.xib */,
 				5551B3E620F2AAF200CE3140 /* Info.plist */,
@@ -190,6 +182,27 @@
 				5551B3FF20F2AAF200CE3140 /* Info.plist */,
 			);
 			path = FilieRebornUITests;
+			sourceTree = "<group>";
+		};
+		5591C81D20F3E553007F725E /* Classic Theme */ = {
+			isa = PBXGroup;
+			children = (
+				5591C80520F332FD007F725E /* FILScroller.h */,
+				5591C80620F332FD007F725E /* FILScroller.m */,
+				5591C80B20F3A6AA007F725E /* FILScrollView.h */,
+				5591C80C20F3A6AA007F725E /* FILScrollView.m */,
+				5591C80820F35354007F725E /* FILTextField.h */,
+				5591C80920F35354007F725E /* FILTextField.m */,
+				5591C80E20F3AEDF007F725E /* FILTitlebarStripesView.h */,
+				5591C80F20F3AEDF007F725E /* FILTitlebarStripesView.m */,
+				5591C81120F3B7C7007F725E /* FILCustomWindow.h */,
+				5591C81220F3B7C7007F725E /* FILCustomWindow.m */,
+				5591C81420F3BFC1007F725E /* FILActiveOnlyImageView.h */,
+				5591C81520F3BFC1007F725E /* FILActiveOnlyImageView.m */,
+				5591C81720F3C0BA007F725E /* FILActiveOnlyButtonView.h */,
+				5591C81820F3C0BB007F725E /* FILActiveOnlyButtonView.m */,
+			);
+			path = "Classic Theme";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,6 +355,7 @@
 				5551B41820F2CCD200CE3140 /* FILDesktopWindowController.m in Sources */,
 				5591C81320F3B7C7007F725E /* FILCustomWindow.m in Sources */,
 				5551B41220F2B05400CE3140 /* FILFileIconView.m in Sources */,
+				5591C81C20F3E52F007F725E /* FILDSStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
