@@ -40,6 +40,12 @@ typedef enum _FILScrollerHitPart
 }
 
 
++(BOOL) compatibleWithOverlayScrollers
+{
+	return NO;
+}
+
+
 -(void) getMinArrowBox: (NSRect *)minArrowBox maxArrowBox: (NSRect *)maxArrowBox trackBox: (NSRect *)trackBox knobBox: (NSRect *)knobBox
 {
 	BOOL isHorzNotVert = self.bounds.size.width > self.bounds.size.height;
@@ -63,6 +69,8 @@ typedef enum _FILScrollerHitPart
 		
 		*knobBox = *trackBox;
 		knobBox->size.width *= knobProportion;
+		if (knobBox->size.width < minArrowBox->size.width)
+			knobBox->size.width = minArrowBox->size.width;
 		knobBox->origin.x += (trackBox->size.width - knobBox->size.width) * doubleValue;
 	}
 	else
@@ -75,18 +83,30 @@ typedef enum _FILScrollerHitPart
 		
 		*knobBox = *trackBox;
 		knobBox->size.height *= knobProportion;
+		if (knobBox->size.height < minArrowBox->size.height)
+			knobBox->size.height = minArrowBox->size.height;
 		knobBox->origin.y += (trackBox->size.height - knobBox->size.height) * doubleValue;
 	}
 }
 
 
+-(NSRect) rectForStroking:(NSRect)rectForFilling
+{
+	NSRect rectForStroking = rectForFilling;
+	rectForStroking.origin.x += 0.5;
+	rectForStroking.origin.y += 0.5;
+	rectForStroking.size.width -= 1.0;
+	rectForStroking.size.height -= 1.0;
+	return rectForStroking;
+}
+
+
 -(void) drawRect: (NSRect)dirtyRect
 {
-	[NSColor.whiteColor setFill];
-	[NSBezierPath fillRect: self.bounds];
-	
-	[NSColor.blackColor setStroke];
-	[NSBezierPath strokeRect: self.bounds];
+	BOOL isActiveWindow = self.window != nil && (NSApplication.sharedApplication.mainWindow == self.window || NSApplication.sharedApplication.keyWindow == self.window);
+	BOOL isNecessary = self.knobProportion > 0.0 && self.knobProportion < 1.0;
+	if (isNecessary)
+		isNecessary = self.isEnabled;
 	
 	NSRect minArrowBox;
 	NSRect maxArrowBox;
@@ -95,28 +115,40 @@ typedef enum _FILScrollerHitPart
 	
 	[self getMinArrowBox: &minArrowBox maxArrowBox: &maxArrowBox trackBox: &trackBox knobBox: &knobBox];
 
-	if (self.trackedPart == FILScrollerHitPartMinArrow)
-	{
-		[NSColor.blackColor setFill];
-		[NSBezierPath fillRect: minArrowBox];
-	}
-	[NSBezierPath strokeRect: minArrowBox];
-
-	if (self.trackedPart == FILScrollerHitPartMaxArrow)
-	{
-		[NSColor.blackColor setFill];
-		[NSBezierPath fillRect: maxArrowBox];
-	}
-	[NSBezierPath strokeRect: maxArrowBox];
+	[NSColor.whiteColor setFill];
+	[NSBezierPath fillRect: self.bounds];
 	
-	if (self.knobProportion > 0.0 && self.knobProportion < 1.0)
+	if (isNecessary && isActiveWindow)
 	{
 		[NSColor.lightGrayColor setFill];
 		[NSBezierPath fillRect: trackBox];
+	}
 
-		[NSColor.whiteColor setFill];
-		[NSBezierPath fillRect: knobBox];
-		[NSBezierPath strokeRect: knobBox];
+	[NSColor.blackColor setStroke];
+	[NSBezierPath strokeRect: [self rectForStroking: self.bounds]];
+	
+	if (isActiveWindow)
+	{
+		if (self.trackedPart == FILScrollerHitPartMinArrow)
+		{
+			[NSColor.blackColor setFill];
+			[NSBezierPath fillRect: minArrowBox];
+		}
+		[NSBezierPath strokeRect: [self rectForStroking: minArrowBox]];
+		
+		if (self.trackedPart == FILScrollerHitPartMaxArrow)
+		{
+			[NSColor.blackColor setFill];
+			[NSBezierPath fillRect: maxArrowBox];
+		}
+		[NSBezierPath strokeRect: [self rectForStroking: maxArrowBox]];
+		
+		if (isNecessary)
+		{
+			[NSColor.whiteColor setFill];
+			[NSBezierPath fillRect: knobBox];
+			[NSBezierPath strokeRect: [self rectForStroking: knobBox]];
+		}
 	}
 }
 
@@ -222,9 +254,36 @@ typedef enum _FILScrollerHitPart
 }
 
 
-+(BOOL) compatibleWithOverlayScrollers
+-(void) viewWillMoveToWindow:(NSWindow *)newWindow
 {
-	return NO;
+	if (self.window)
+	{
+		[NSNotificationCenter.defaultCenter removeObserver: self name: NSWindowDidBecomeKeyNotification object: self.window];
+		[NSNotificationCenter.defaultCenter removeObserver: self name: NSWindowDidBecomeMainNotification object: self.window];
+	}
+}
+
+
+-(void)triggerRedraw
+{
+	[self setNeedsDisplay: YES];
+}
+
+
+-(void)keyOrMainStatusDidChange: (NSNotification *)notification
+{
+	[self performSelector:@selector(triggerRedraw) withObject:nil afterDelay:0.0];
+}
+
+
+-(void) viewDidMoveToWindow
+{
+	if (self.window)
+	{
+		[NSNotificationCenter.defaultCenter addObserver: self selector: @selector(keyOrMainStatusDidChange:) name: NSWindowDidBecomeKeyNotification object: self.window];
+		[NSNotificationCenter.defaultCenter addObserver: self selector: @selector(keyOrMainStatusDidChange:) name: NSWindowDidBecomeMainNotification object: self.window];
+		[self setNeedsDisplay: YES];
+	}
 }
 
 @end
