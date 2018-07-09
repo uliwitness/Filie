@@ -64,8 +64,8 @@ typedef enum _FILScrollerHitPart
 		*minArrowBox = (NSRect){ NSZeroPoint, { self.bounds.size.height, self.bounds.size.height } };
 		*maxArrowBox = (NSRect){ { NSMaxX(self.bounds) - self.bounds.size.height, 0 }, { self.bounds.size.height, self.bounds.size.height } };
 		
-		trackBox->origin.x += minArrowBox->size.width;
-		trackBox->size.width -= minArrowBox->size.width + maxArrowBox->size.width;
+		trackBox->origin.x += minArrowBox->size.width - 1;
+		trackBox->size.width -= minArrowBox->size.width - 1 + maxArrowBox->size.width - 1;
 		
 		*knobBox = *trackBox;
 		knobBox->size.width *= knobProportion;
@@ -78,8 +78,8 @@ typedef enum _FILScrollerHitPart
 		*minArrowBox = (NSRect){ NSZeroPoint, { self.bounds.size.width, self.bounds.size.width } };
 		*maxArrowBox = (NSRect){ { 0, NSMaxY(self.bounds) - self.bounds.size.width }, { self.bounds.size.width, self.bounds.size.width } };
 		
-		trackBox->origin.y += minArrowBox->size.height;
-		trackBox->size.height -= minArrowBox->size.height + maxArrowBox->size.height;
+		trackBox->origin.y += minArrowBox->size.height - 1;
+		trackBox->size.height -= minArrowBox->size.height - 1 + maxArrowBox->size.height - 1;
 		
 		*knobBox = *trackBox;
 		knobBox->size.height *= knobProportion;
@@ -264,15 +264,9 @@ typedef enum _FILScrollerHitPart
 }
 
 
--(void)triggerRedraw
-{
-	[self setNeedsDisplay: YES];
-}
-
-
 -(void)keyOrMainStatusDidChange: (NSNotification *)notification
 {
-	[self performSelector:@selector(triggerRedraw) withObject:nil afterDelay:0.0];
+	[self setNeedsDisplay: YES];
 }
 
 
