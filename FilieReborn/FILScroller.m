@@ -28,6 +28,7 @@ typedef enum _FILScrollerHitPart
 @property FILScrollerHitPart trackedPart;
 @property NSPoint trackStartPos;
 @property double trackingStartValue;
+@property double trackingCurrentValue;
 
 @end
 
@@ -46,7 +47,27 @@ typedef enum _FILScrollerHitPart
 }
 
 
--(void) getMinArrowBox: (NSRect *)minArrowBox maxArrowBox: (NSRect *)maxArrowBox trackBox: (NSRect *)trackBox knobBox: (NSRect *)knobBox
+-(instancetype)initWithFrame:(NSRect)frameRect
+{
+	if (self = [super initWithFrame:frameRect])
+	{
+		_trackingCurrentValue = -1.0;
+	}
+	return self;
+}
+
+
+-(instancetype)initWithCoder:(NSCoder *)coder
+{
+	if (self = [super initWithCoder:coder])
+	{
+		_trackingCurrentValue = -1.0;
+	}
+	return self;
+}
+
+
+-(void) getMinArrowBox: (NSRect *)minArrowBox maxArrowBox: (NSRect *)maxArrowBox trackBox: (NSRect *)trackBox knobBox: (NSRect *)knobBox trackingKnobBox: (NSRect *)trackingKnobBox
 {
 	BOOL isHorzNotVert = self.bounds.size.width > self.bounds.size.height;
 	*trackBox = self.bounds;
@@ -56,8 +77,14 @@ typedef enum _FILScrollerHitPart
 		doubleValue = 1.0;
 	if (doubleValue < 0.0)
 		doubleValue = 0.0;
-	
-	CGFloat knobProportion = self.knobProportion;
+
+	CGFloat trackingCurrentValue = self.trackingCurrentValue;
+	if (trackingCurrentValue > 1.0)
+		trackingCurrentValue = 1.0;
+	if (trackingCurrentValue < 0.0)
+		trackingCurrentValue = 0.0;
+
+	//CGFloat knobProportion = self.knobProportion;
 	
 	if (isHorzNotVert)
 	{
@@ -68,10 +95,13 @@ typedef enum _FILScrollerHitPart
 		trackBox->size.width -= minArrowBox->size.width - 1 + maxArrowBox->size.width - 1;
 		
 		*knobBox = *trackBox;
-		knobBox->size.width *= knobProportion;
-		if (knobBox->size.width < minArrowBox->size.width)
+		//knobBox->size.width *= knobProportion;
+		//if (knobBox->size.width < minArrowBox->size.width) // We don't just enforce a minimum, System 7 always had square thumbs.
 			knobBox->size.width = minArrowBox->size.width;
+		*trackingKnobBox = *knobBox;
+		
 		knobBox->origin.x += (trackBox->size.width - knobBox->size.width) * doubleValue;
+		trackingKnobBox->origin.x += (trackBox->size.width - trackingKnobBox->size.width) * trackingCurrentValue;
 	}
 	else
 	{
@@ -82,10 +112,13 @@ typedef enum _FILScrollerHitPart
 		trackBox->size.height -= minArrowBox->size.height - 1 + maxArrowBox->size.height - 1;
 		
 		*knobBox = *trackBox;
-		knobBox->size.height *= knobProportion;
-		if (knobBox->size.height < minArrowBox->size.height)
+		//knobBox->size.height *= knobProportion;
+		//if (knobBox->size.height < minArrowBox->size.height) // We don't just enforce a minimum, System 7 always had square thumbs.
 			knobBox->size.height = minArrowBox->size.height;
+		*trackingKnobBox = *knobBox;
+
 		knobBox->origin.y += (trackBox->size.height - knobBox->size.height) * doubleValue;
+		trackingKnobBox->origin.y += (trackBox->size.height - trackingKnobBox->size.height) * trackingCurrentValue;
 	}
 }
 
@@ -112,8 +145,9 @@ typedef enum _FILScrollerHitPart
 	NSRect maxArrowBox;
 	NSRect trackBox;
 	NSRect knobBox;
+	NSRect trackingKnobBox;
 	
-	[self getMinArrowBox: &minArrowBox maxArrowBox: &maxArrowBox trackBox: &trackBox knobBox: &knobBox];
+	[self getMinArrowBox: &minArrowBox maxArrowBox: &maxArrowBox trackBox: &trackBox knobBox: &knobBox trackingKnobBox: &trackingKnobBox];
 
 	[NSColor.whiteColor setFill];
 	[NSBezierPath fillRect: self.bounds];
@@ -148,6 +182,11 @@ typedef enum _FILScrollerHitPart
 			[NSColor.whiteColor setFill];
 			[NSBezierPath fillRect: knobBox];
 			[NSBezierPath strokeRect: [self rectForStroking: knobBox]];
+			
+			if (self.trackingCurrentValue >= 0)
+			{
+				[NSBezierPath strokeRect: [self rectForStroking: trackingKnobBox]];
+			}
 		}
 	}
 }
@@ -162,8 +201,9 @@ typedef enum _FILScrollerHitPart
 	NSRect maxArrowBox;
 	NSRect trackBox;
 	NSRect knobBox;
+	NSRect trackingKnobBox;
 	
-	[self getMinArrowBox: &minArrowBox maxArrowBox: &maxArrowBox trackBox: &trackBox knobBox: &knobBox];
+	[self getMinArrowBox: &minArrowBox maxArrowBox: &maxArrowBox trackBox: &trackBox knobBox: &knobBox trackingKnobBox: &trackingKnobBox];
 	
 	if (NSPointInRect(self.trackStartPos, minArrowBox))
 	{
@@ -210,8 +250,9 @@ typedef enum _FILScrollerHitPart
 		NSRect maxArrowBox;
 		NSRect trackBox;
 		NSRect knobBox;
+		NSRect trackingKnobBox;
 		
-		[self getMinArrowBox: &minArrowBox maxArrowBox: &maxArrowBox trackBox: &trackBox knobBox: &knobBox];
+		[self getMinArrowBox: &minArrowBox maxArrowBox: &maxArrowBox trackBox: &trackBox knobBox: &knobBox trackingKnobBox: &trackingKnobBox];
 
 		BOOL isHorzNotVert = self.bounds.size.width > self.bounds.size.height;
 		CGFloat possibleDistance = isHorzNotVert ? (trackBox.size.width - knobBox.size.width) : (trackBox.size.height - knobBox.size.height);
@@ -225,12 +266,25 @@ typedef enum _FILScrollerHitPart
 		else if (newValue < 0)
 			newValue = 0;
 		
-		self.doubleValue = newValue;
-		myHitPart = NSScrollerKnob;
-		[self sendAction:self.action to:self.target];
+		self.trackingCurrentValue = newValue;
 		
 		[self setNeedsDisplay: YES];
 	}
+}
+
+
+-(void) mouseUp:(NSEvent *)event
+{
+	if (self.trackingCurrentValue >= 0.0)
+	{
+		self.doubleValue = self.trackingCurrentValue;
+		myHitPart = NSScrollerKnob;
+		[self sendAction:self.action to:self.target];
+		self.trackingCurrentValue = -1.0;
+	}
+
+	self.trackedPart = FILScrollerHitPartNone;
+	[self setNeedsDisplay: YES];
 }
 
 
@@ -244,13 +298,6 @@ typedef enum _FILScrollerHitPart
 -(NSScrollerPart)hitPart
 {
 	return myHitPart;
-}
-
-
--(void) mouseUp:(NSEvent *)event
-{
-	self.trackedPart = FILScrollerHitPartNone;
-	[self setNeedsDisplay: YES];
 }
 
 
