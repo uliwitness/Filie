@@ -7,12 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5551B3E020F2AAEF00CE3140 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5551B3DF20F2AAEF00CE3140 /* AppDelegate.m */; };
+		5551B3E020F2AAEF00CE3140 /* FILAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5551B3DF20F2AAEF00CE3140 /* FILAppDelegate.m */; };
 		5551B3E220F2AAF200CE3140 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5551B3E120F2AAF200CE3140 /* Assets.xcassets */; };
 		5551B3E520F2AAF200CE3140 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5551B3E320F2AAF200CE3140 /* MainMenu.xib */; };
 		5551B3E820F2AAF200CE3140 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5551B3E720F2AAF200CE3140 /* main.m */; };
 		5551B3F320F2AAF200CE3140 /* FilieRebornTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5551B3F220F2AAF200CE3140 /* FilieRebornTests.m */; };
 		5551B3FE20F2AAF200CE3140 /* FilieRebornUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5551B3FD20F2AAF200CE3140 /* FilieRebornUITests.m */; };
+		5551B40E20F2AC1D00CE3140 /* FILFolderWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5551B40C20F2AC1D00CE3140 /* FILFolderWindowController.m */; };
+		5551B41220F2B05400CE3140 /* FILFileIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5551B41120F2B05400CE3140 /* FILFileIconView.m */; };
+		5551B41520F2C2D500CE3140 /* NSString+FILMD5Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = 5551B41420F2C2D500CE3140 /* NSString+FILMD5Hash.m */; };
+		5551B41820F2CCD200CE3140 /* FILDesktopWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5551B41720F2CCD200CE3140 /* FILDesktopWindowController.m */; };
+		5551B41C20F2CFDD00CE3140 /* FILFolderWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5551B41B20F2CFDD00CE3140 /* FILFolderWindowController.xib */; };
+		5551B41E20F2D05300CE3140 /* FILDesktopWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5551B41D20F2D05300CE3140 /* FILDesktopWindowController.xib */; };
+		5591C80420F32AC9007F725E /* FILBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5591C80320F32AC9007F725E /* FILBackgroundView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,9 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5551B3DB20F2AAEF00CE3140 /* FilieReborn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilieReborn.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5551B3DE20F2AAEF00CE3140 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		5551B3DF20F2AAEF00CE3140 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5551B3DB20F2AAEF00CE3140 /* Filie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Filie.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5551B3DE20F2AAEF00CE3140 /* FILAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FILAppDelegate.h; sourceTree = "<group>"; };
+		5551B3DF20F2AAEF00CE3140 /* FILAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FILAppDelegate.m; sourceTree = "<group>"; };
 		5551B3E120F2AAF200CE3140 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5551B3E420F2AAF200CE3140 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		5551B3E620F2AAF200CE3140 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +54,18 @@
 		5551B3F920F2AAF200CE3140 /* FilieRebornUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilieRebornUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5551B3FD20F2AAF200CE3140 /* FilieRebornUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilieRebornUITests.m; sourceTree = "<group>"; };
 		5551B3FF20F2AAF200CE3140 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5551B40B20F2AC1D00CE3140 /* FILFolderWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FILFolderWindowController.h; sourceTree = "<group>"; };
+		5551B40C20F2AC1D00CE3140 /* FILFolderWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FILFolderWindowController.m; sourceTree = "<group>"; };
+		5551B41020F2B05400CE3140 /* FILFileIconView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FILFileIconView.h; sourceTree = "<group>"; };
+		5551B41120F2B05400CE3140 /* FILFileIconView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FILFileIconView.m; sourceTree = "<group>"; };
+		5551B41320F2C2D500CE3140 /* NSString+FILMD5Hash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+FILMD5Hash.h"; sourceTree = "<group>"; };
+		5551B41420F2C2D500CE3140 /* NSString+FILMD5Hash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+FILMD5Hash.m"; sourceTree = "<group>"; };
+		5551B41620F2CCD200CE3140 /* FILDesktopWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FILDesktopWindowController.h; sourceTree = "<group>"; };
+		5551B41720F2CCD200CE3140 /* FILDesktopWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FILDesktopWindowController.m; sourceTree = "<group>"; };
+		5551B41B20F2CFDD00CE3140 /* FILFolderWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FILFolderWindowController.xib; sourceTree = "<group>"; };
+		5551B41D20F2D05300CE3140 /* FILDesktopWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FILDesktopWindowController.xib; sourceTree = "<group>"; };
+		5591C80220F32AC9007F725E /* FILBackgroundView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FILBackgroundView.h; sourceTree = "<group>"; };
+		5591C80320F32AC9007F725E /* FILBackgroundView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FILBackgroundView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +106,7 @@
 		5551B3DC20F2AAEF00CE3140 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5551B3DB20F2AAEF00CE3140 /* FilieReborn.app */,
+				5551B3DB20F2AAEF00CE3140 /* Filie.app */,
 				5551B3EE20F2AAF200CE3140 /* FilieRebornTests.xctest */,
 				5551B3F920F2AAF200CE3140 /* FilieRebornUITests.xctest */,
 			);
@@ -97,8 +116,20 @@
 		5551B3DD20F2AAEF00CE3140 /* FilieReborn */ = {
 			isa = PBXGroup;
 			children = (
-				5551B3DE20F2AAEF00CE3140 /* AppDelegate.h */,
-				5551B3DF20F2AAEF00CE3140 /* AppDelegate.m */,
+				5551B3DE20F2AAEF00CE3140 /* FILAppDelegate.h */,
+				5551B3DF20F2AAEF00CE3140 /* FILAppDelegate.m */,
+				5551B40B20F2AC1D00CE3140 /* FILFolderWindowController.h */,
+				5551B40C20F2AC1D00CE3140 /* FILFolderWindowController.m */,
+				5551B41B20F2CFDD00CE3140 /* FILFolderWindowController.xib */,
+				5551B41020F2B05400CE3140 /* FILFileIconView.h */,
+				5551B41120F2B05400CE3140 /* FILFileIconView.m */,
+				5591C80220F32AC9007F725E /* FILBackgroundView.h */,
+				5591C80320F32AC9007F725E /* FILBackgroundView.m */,
+				5551B41620F2CCD200CE3140 /* FILDesktopWindowController.h */,
+				5551B41720F2CCD200CE3140 /* FILDesktopWindowController.m */,
+				5551B41D20F2D05300CE3140 /* FILDesktopWindowController.xib */,
+				5551B41320F2C2D500CE3140 /* NSString+FILMD5Hash.h */,
+				5551B41420F2C2D500CE3140 /* NSString+FILMD5Hash.m */,
 				5551B3E120F2AAF200CE3140 /* Assets.xcassets */,
 				5551B3E320F2AAF200CE3140 /* MainMenu.xib */,
 				5551B3E620F2AAF200CE3140 /* Info.plist */,
@@ -129,9 +160,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5551B3DA20F2AAEF00CE3140 /* FilieReborn */ = {
+		5551B3DA20F2AAEF00CE3140 /* Filie */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5551B40220F2AAF200CE3140 /* Build configuration list for PBXNativeTarget "FilieReborn" */;
+			buildConfigurationList = 5551B40220F2AAF200CE3140 /* Build configuration list for PBXNativeTarget "Filie" */;
 			buildPhases = (
 				5551B3D720F2AAEF00CE3140 /* Sources */,
 				5551B3D820F2AAEF00CE3140 /* Frameworks */,
@@ -141,9 +172,9 @@
 			);
 			dependencies = (
 			);
-			name = FilieReborn;
+			name = Filie;
 			productName = FilieReborn;
-			productReference = 5551B3DB20F2AAEF00CE3140 /* FilieReborn.app */;
+			productReference = 5551B3DB20F2AAEF00CE3140 /* Filie.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5551B3ED20F2AAF200CE3140 /* FilieRebornTests */ = {
@@ -193,6 +224,11 @@
 				TargetAttributes = {
 					5551B3DA20F2AAEF00CE3140 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 					5551B3ED20F2AAF200CE3140 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -217,7 +253,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5551B3DA20F2AAEF00CE3140 /* FilieReborn */,
+				5551B3DA20F2AAEF00CE3140 /* Filie */,
 				5551B3ED20F2AAF200CE3140 /* FilieRebornTests */,
 				5551B3F820F2AAF200CE3140 /* FilieRebornUITests */,
 			);
@@ -229,7 +265,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5551B41E20F2D05300CE3140 /* FILDesktopWindowController.xib in Resources */,
 				5551B3E220F2AAF200CE3140 /* Assets.xcassets in Resources */,
+				5551B41C20F2CFDD00CE3140 /* FILFolderWindowController.xib in Resources */,
 				5551B3E520F2AAF200CE3140 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,7 +294,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5551B3E820F2AAF200CE3140 /* main.m in Sources */,
-				5551B3E020F2AAEF00CE3140 /* AppDelegate.m in Sources */,
+				5551B41520F2C2D500CE3140 /* NSString+FILMD5Hash.m in Sources */,
+				5551B40E20F2AC1D00CE3140 /* FILFolderWindowController.m in Sources */,
+				5551B3E020F2AAEF00CE3140 /* FILAppDelegate.m in Sources */,
+				5591C80420F32AC9007F725E /* FILBackgroundView.m in Sources */,
+				5551B41820F2CCD200CE3140 /* FILDesktopWindowController.m in Sources */,
+				5551B41220F2B05400CE3140 /* FILFileIconView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,12 +324,12 @@
 /* Begin PBXTargetDependency section */
 		5551B3F020F2AAF200CE3140 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5551B3DA20F2AAEF00CE3140 /* FilieReborn */;
+			target = 5551B3DA20F2AAEF00CE3140 /* Filie */;
 			targetProxy = 5551B3EF20F2AAF200CE3140 /* PBXContainerItemProxy */;
 		};
 		5551B3FB20F2AAF200CE3140 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5551B3DA20F2AAEF00CE3140 /* FilieReborn */;
+			target = 5551B3DA20F2AAEF00CE3140 /* Filie */;
 			targetProxy = 5551B3FA20F2AAF200CE3140 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -416,7 +459,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = FilieReborn/FilieReborn.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = RCKXACKVZS;
@@ -434,7 +476,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = FilieReborn/FilieReborn.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = RCKXACKVZS;
@@ -534,7 +575,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5551B40220F2AAF200CE3140 /* Build configuration list for PBXNativeTarget "FilieReborn" */ = {
+		5551B40220F2AAF200CE3140 /* Build configuration list for PBXNativeTarget "Filie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5551B40320F2AAF200CE3140 /* Debug */,

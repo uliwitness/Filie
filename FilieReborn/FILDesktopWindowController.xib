@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="FILDesktopWindowController">
+            <connections>
+                <outlet property="desktopImageView" destination="6GN-cN-weP" id="uv0-IF-Xy0"/>
+                <outlet property="filesView" destination="b1U-wQ-MwJ" id="zcO-hT-rer"/>
+                <outlet property="window" destination="QvC-M9-y7g" id="HbQ-Pz-sGa"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
+            <windowStyleMask key="styleMask" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ" customClass="FILBackgroundView">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6GN-cN-weP">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="CIM-I6-9YI"/>
+                    </imageView>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b1U-wQ-MwJ" customClass="FILBackgroundView">
+                        <rect key="frame" x="0.0" y="47" width="327" height="201"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="6GN-cN-weP" secondAttribute="trailing" id="4mr-Jk-vO3"/>
+                    <constraint firstItem="6GN-cN-weP" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="DbZ-8f-PM1"/>
+                    <constraint firstItem="6GN-cN-weP" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="P1X-Jr-dYl"/>
+                    <constraint firstAttribute="bottom" secondItem="6GN-cN-weP" secondAttribute="bottom" id="XAv-4a-SG2"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="8al-Cx-lNt"/>
+            </connections>
+        </window>
+    </objects>
+</document>
