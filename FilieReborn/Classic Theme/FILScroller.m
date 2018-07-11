@@ -86,19 +86,21 @@ typedef enum _FILScrollerHitPart
 		trackingCurrentValue = 0.0;
 
 	//CGFloat knobProportion = self.knobProportion;
+	CGFloat knobWidth = 0;
 	
 	if (isHorzNotVert)
 	{
 		*minArrowBox = (NSRect){ NSZeroPoint, { self.bounds.size.height, self.bounds.size.height } };
 		*maxArrowBox = (NSRect){ { NSMaxX(self.bounds) - self.bounds.size.height, 0 }, { self.bounds.size.height, self.bounds.size.height } };
 		
-		trackBox->origin.x += minArrowBox->size.width - 1;
-		trackBox->size.width -= minArrowBox->size.width - 1 + maxArrowBox->size.width - 1;
+		trackBox->origin.x += minArrowBox->size.width;
+		trackBox->size.width -= minArrowBox->size.width + maxArrowBox->size.width;
 		
-		*knobBox = *trackBox;
+		*knobBox = NSInsetRect(*trackBox, 0, 1);
+		knobWidth = knobBox->size.height;
 		//knobBox->size.width *= knobProportion;
-		//if (knobBox->size.width < minArrowBox->size.width) // We don't just enforce a minimum, System 7 always had square thumbs.
-			knobBox->size.width = minArrowBox->size.width;
+		//if (knobBox->size.width < knobWidth) // We don't just enforce a minimum, System 7 always had square thumbs.
+			knobBox->size.width = knobWidth;
 		*trackingKnobBox = *knobBox;
 		
 		knobBox->origin.x += (trackBox->size.width - knobBox->size.width) * doubleValue;
@@ -109,13 +111,14 @@ typedef enum _FILScrollerHitPart
 		*minArrowBox = (NSRect){ NSZeroPoint, { self.bounds.size.width, self.bounds.size.width } };
 		*maxArrowBox = (NSRect){ { 0, NSMaxY(self.bounds) - self.bounds.size.width }, { self.bounds.size.width, self.bounds.size.width } };
 		
-		trackBox->origin.y += minArrowBox->size.height - 1;
-		trackBox->size.height -= minArrowBox->size.height - 1 + maxArrowBox->size.height - 1;
+		trackBox->origin.y += minArrowBox->size.height;
+		trackBox->size.height -= minArrowBox->size.height + maxArrowBox->size.height;
 		
-		*knobBox = *trackBox;
+		*knobBox = NSInsetRect(*trackBox, 1, 0);
+		knobWidth = knobBox->size.width;
 		//knobBox->size.height *= knobProportion;
-		//if (knobBox->size.height < minArrowBox->size.height) // We don't just enforce a minimum, System 7 always had square thumbs.
-			knobBox->size.height = minArrowBox->size.height;
+		//if (knobBox->size.height < knobWidth) // We don't just enforce a minimum, System 7 always had square thumbs.
+			knobBox->size.height = knobWidth;
 		*trackingKnobBox = *knobBox;
 
 		knobBox->origin.y += (trackBox->size.height - knobBox->size.height) * doubleValue;
