@@ -9,10 +9,15 @@
 #import "FILDSStore.h"
 
 
+NSString * const FILDSStoreIconLocationProperty = @"Iloc";
+
+
 @interface FILDSStore ()
 
 @property NSData *data;
 @property NSMutableArray<NSNumber *> *offsets;
+@property NSMutableDictionary<NSString *,NSMutableDictionary<NSString *, id> *> *propertiesPerFile;
+
 @end
 
 @implementation FILDSStore
@@ -93,7 +98,7 @@
 			uint32_t numRecordsInTree = [self readUInt32At: &offset];
 			uint32_t numBlocksInTree = [self readUInt32At: &offset];
 			uint32_t magicNumber = [self readUInt32At: &offset];
-			NSAssert(magicNumber == 0x100c, @"Magic number has unexpected value");
+			//NSAssert(magicNumber == 0x100c, @"Magic number has unexpected value");
 			
 			[self readBlockWithID: firstBlockID];
 		}
@@ -136,64 +141,129 @@
 }
 
 
+
+#pragma mark - Public API & helpers:
+
+-(id)	convertRawValue: (id)value forKey: (NSString *)key
+{
+	if ([key isEqualToString:FILDSStoreIconLocationProperty])
+	{
+		NSData *rawData = value;
+		
+		struct _pos { int x; int y; } *pos = (struct _pos *) ((uint8_t *)rawData.bytes);
+		
+		value = @{ @"x": @(NSSwapBigIntToHost(pos->x)), @"y": @(NSSwapBigIntToHost(pos->y)), @"raw": value };
+	}
+	
+	return value;
+}
+
+
+-(void) setValue:(id)value forKey:(NSString *)key ofFile:(NSString *)fileName
+{
+	value = [self convertRawValue: value forKey: key];
+	
+	@synchronized(self)
+	{
+		if(!_propertiesPerFile)
+			_propertiesPerFile = [NSMutableDictionary new];
+		NSMutableDictionary<NSString *, id> *fileProperties = _propertiesPerFile[fileName];
+		if(!fileProperties)
+		{
+			fileProperties = [NSMutableDictionary new];
+			_propertiesPerFile[fileName] = fileProperties;
+		}
+		
+		fileProperties[key] = value;
+	}
+}
+
+
+-(NSDictionary<NSString *, id> *)propertiesForFile: (NSString *)fileName
+{
+	NSDictionary<NSString *, id> *props = nil;
+	@synchronized(self)
+	{
+		props = [_propertiesPerFile[fileName] copy];
+	}
+	return props;
+}
+
+
+-(NSArray<NSString *> *) filenames
+{
+	NSArray<NSString *> *fnames = nil;
+	@synchronized(self)
+	{
+		fnames = [_propertiesPerFile.allKeys copy];
+	}
+	return fnames;
+}
+
+
+#pragma mark - High-level reading
+
+
 -(void) readOneRecordAt: (NSInteger *)inOffset
 {
 	NSString *fileName = [self readUTF16StringAt: inOffset];
 	NSString *propertyName = [self readFourCCStringAt: inOffset];
 	uint32_t dataType = [self readUInt32At: inOffset];
 	
-	NSString * propertyValue = @"<error>";
-	
 	switch (dataType)
 	{
 		case 'long':
 		{
 			int32_t theNum = [self readInt32At: inOffset];
-			propertyValue = [NSString stringWithFormat: @"%d", theNum];
+			[self setValue: @(theNum) forKey: propertyName ofFile: fileName];
 			break;
 		}
 		case 'shor':
 		{
 			*inOffset += 2; // Skip padding.
 			int16_t theNum = [self readInt16At: inOffset];
-			propertyValue = [NSString stringWithFormat: @"%d", theNum];
+			[self setValue: @(theNum) forKey: propertyName ofFile: fileName];
 			break;
 		}
 		case 'bool':
 		{
 			uint8_t theBool = [self readUInt8At: inOffset];
-			propertyValue = (theBool == 0) ? @"NO" : @"YES";
+			[self setValue: [NSNumber numberWithBool: theBool != 0] forKey: propertyName ofFile: fileName];
 			break;
 		}
 		case 'blob':
 		{
 			NSData *data = [self readDataAt: inOffset];
-			propertyValue = data.description;
+			[self setValue: data forKey: propertyName ofFile: fileName];
 			break;
 		}
 		case 'type':
-			propertyValue = [self readFourCCStringAt: inOffset];
+			[self setValue: [self readFourCCStringAt: inOffset] forKey: propertyName ofFile: fileName];
 			break;
+			
 		case 'ustr':
-			propertyValue = [self readUTF16StringAt: inOffset];
+			[self setValue: [self readUTF16StringAt: inOffset] forKey: propertyName ofFile: fileName];
 			break;
+			
 		case 'comp':
 			*inOffset += 8;
-			propertyValue = @"[complex number]";
+			// complex number
 			break;
+			
 		case 'dutc': // UTC timestamp since Jan 1st 1904.
 		{
 			uint64_t dateStamp = [self readUInt64At: inOffset];
 			NSTimeInterval since1904interval = ((double)dateStamp) / (1.0/65536);
 			NSDate *jan1904 = [NSDate dateWithTimeIntervalSinceReferenceDate: -3061152000.000000];
 			NSDate *actualDate = [NSDate dateWithTimeInterval: since1904interval sinceDate: jan1904];
-			propertyValue = actualDate.description;
+			[self setValue: actualDate forKey: propertyName ofFile: fileName];
 			break;
 		}
 	}
-	
-	NSLog(@"%@: %@=%@", fileName, propertyName, propertyValue);
 }
+
+
+#pragma - low-level reading:
 
 
 -(uint64_t) readUInt64At: (NSInteger *)inOffset

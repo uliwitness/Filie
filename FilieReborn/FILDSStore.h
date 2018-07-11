@@ -8,8 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+
+extern NSString * const FILDSStoreIconLocationProperty;
+
+
 @interface FILDSStore : NSObject
 
 -(instancetype) initWithURL: (NSURL *)inURL;
+-(NSDictionary<NSString *, id> *) propertiesForFile: (NSString *)fileName;
+-(NSArray<NSString *> *) filenames;
 
 @end
