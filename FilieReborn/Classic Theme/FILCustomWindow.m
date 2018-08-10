@@ -27,10 +27,29 @@
 	[self close];
 }
 
+
 -(void) performZoom: (id)sender
 {
 	[self zoom: self];
 }
+
+
+-(BOOL)	validateMenuItem: (NSMenuItem *)menuItem
+{
+	if (menuItem.action == @selector(performClose:))
+	{
+		return YES;
+	}
+	else if (menuItem.action == @selector(performZoom:))
+	{
+		return YES;
+	}
+	else
+	{
+		return [super validateMenuItem: menuItem];
+	}
+}
+
 
 -(NSWindowStyleMask)styleMask
 {

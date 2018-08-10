@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) NSURL *fileURL;
 
--(instancetype) init NS_UNAVAILABLE;
+-(instancetype) initWithFrame:(NSRect)frameRect NS_UNAVAILABLE;
 -(instancetype)	initWithURL: (NSURL *)fileURL;
 
 @end

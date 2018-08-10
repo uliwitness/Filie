@@ -170,7 +170,6 @@ NSString *FILWindowRectKey = @"FILWindowRect";
 				finderIcon.frame = newFrame;
 				finderIcon.action = @selector(testAction:);
 				finderIcon.target = self;
-				finderIcon.buttonType = NSButtonTypeMomentaryChange;
 
 				[self.filesView addSubview: finderIcon];
 				self.filesView.frame = NSMakeRect(0, 0, maxSize.width + 10, maxSize.height + 10);
